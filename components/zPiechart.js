@@ -16,7 +16,7 @@ const Piechart = () => {
   }, []);
 
   //colors
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042","#CB6042"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042","#CB6042", 'purple'];
 
   return (
     <div className="flex-wrap">
@@ -40,7 +40,7 @@ const Piechart = () => {
         <Legend
           layout="vertical"
           align="right"
-          verticalAlign="middle"
+          verticalAlign="bottom"
           iconSize={16}
           payload={data.map((entry, index) => ({
             id: entry.name,
