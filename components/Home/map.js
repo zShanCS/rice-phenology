@@ -226,8 +226,8 @@ export default function Map({ selectedLayer, date, cropType }) {
       </div>
       <MapContainer
         center={[32.33925700144764, 72.5339985983349]}
-        zoom={18}
-        scrollWheelZoom={false}
+        zoom={16}
+        scrollWheelZoom={true}
         style={{ height: "100%", width: "100%", zIndex: 0 }}
       >
         {/* sattelite view */}
