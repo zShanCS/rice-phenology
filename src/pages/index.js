@@ -20,7 +20,7 @@ const Index = () => {
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
     setSelectedCropType("");
-    if(event.target.value === "2022-07-19") {
+    if (event.target.value === "2022-07-19") {
       setSelectedCropType("SK");
     }
   };
@@ -48,13 +48,18 @@ const Index = () => {
       <Head>
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
+      <div className="w-full">
+        <span className={"flex justify-center items-center text-white text-6xl mb-8 font-2xl"}>
+          Rice Phenological Stage Detection
+        </span>
+      </div>
       <div className="flex flex-col md:flex-row md:items-start">
         <div className="w-full md:w-2/3">
           <div className="w-full flex space-x-9">
-            <Card title={"Fields"} number={11} />
-            <Card title={"Jobs active"} number={76} icon="fire" />
-            <Card title={"Jobs due"} number={17} icon="time" />
-            <Card title={"Jobs done"} number={12} icon="done" />
+            <Card title={"Total Fields"} number={11} />
+            <Card title={"Crop Harvest Done"} number={'10 / 11'} icon="fire" />
+            {/* <Card title={"Jobs due"} number={17} icon="time" /> */}
+            {/* <Card title={"Jobs done"} number={12} icon="done" /> */}
           </div>
           <div className=" bg-white shadow-lg h-full">
             <Map
@@ -63,16 +68,16 @@ const Index = () => {
               cropType={selectedCropType}
             />
           </div>
-          <div className="bg-black font-sans  bg-opacity-25 mt-5 pt-5  shadow-lg px-6 mb-6 md:ml-6">
+          <div className="bg-black font-sans  bg-opacity-50 mt-5 pt-5  shadow-lg px-6 mb-6 md:ml-6">
             <h3 className="text-xl font-bold mb-5 flex items-center text-white ">
               <FaChartBar className="inline-block mr-2" />
               Crop Growth (Change of {layers[selectedIndex].name} over time)
             </h3>
-            <Barchart layer={layers[selectedIndex].name}/>
+            <Barchart layer={layers[selectedIndex].name} />
           </div>
         </div>
         <div className="flex flex-col font-sans w-1/3">
-        <div className="bg-black bg-opacity-50 text-white shadow-lg px-6 md:ml-6 mt-5">
+          <div className="bg-black bg-opacity-50 text-white shadow-lg px-6 md:ml-6 mt-5">
             <div className="border-black border-dotted p-4 mt-4">
               <h3 className="text-lg font-bold mb-2 ">Select layer:</h3>
               {layers.map((layer, index) => (
@@ -110,18 +115,18 @@ const Index = () => {
                   value={selectedCropType}
                   onChange={handleCropTypeChange}
                   className="block appearance-none w-full text-black bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline disabled:bg-gray-200 disabled:text-black"
-                  disabled={selectedDate === "2022-06-25"||selectedDate === "2022-09-10"||selectedDate === "2022-07-19"?true:false}
+                  disabled={selectedDate === "2022-06-25" || selectedDate === "2022-09-10" || selectedDate === "2022-07-19" ? true : false}
                 >
                   {cropTypes.map((cropType, index) => (
                     <option key={index} value={cropType.name}>
-                      {cropType.name==="SK"?"Super Kernel":"None"}
+                      {cropType.name === "SK" ? "Super Kernel" : "None"}
                     </option>
                   ))}
                 </select>
               </div>
             </div>
           </div>
-          <div className="bg-black bg-opacity-25 shadow-lg px-6 md:ml-6 mt-5">
+          <div className="bg-black bg-opacity-50 shadow-lg px-6 md:ml-6 mt-5">
             <h3 className="text-2xl mt-5 font-bold mb-2 text-white flex items-center">
               <FaChartPie className="inline-block mr-2" />
               How long each Phenological stage took?

@@ -16,6 +16,10 @@ export default function LowerTopBar() {
       className=" w-screen bg-black text-slate-200 bg-opacity-50 font-sans shadow-lg flex justify-center "
     >
       <div className="flex gap-x-5">
+        
+      
+
+
         <div
           className={`p-4 transition duration-300 ${
             isActive("/")
