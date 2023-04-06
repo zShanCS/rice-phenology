@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { layersData } from "@/pages/api/alldata";
 import {
   XAxis,
   YAxis,
@@ -16,67 +17,8 @@ const Barchart = ({width=600, layer='NDVI'}) => {
 
   const genData = async (layer) => {
     
-    const jsonData = {
-
-        'NDVI': [
-            {
-                "date": "07/03",
-                "NDVI": 0.1
-            },
-            {
-                "date": "08/03",
-                "NDVI": 0.3
-            },
-            {
-                "date": "09/03",
-                "NDVI": 0.6
-            },
-            {
-                "date": "10/03",
-                "NDVI": 0.8
-            }
-        ],
-        
-        'SAVI': [
-            {
-                "date": "07/03",
-                "SAVI": 0.3
-            },
-            {
-                "date": "08/03",
-                "SAVI": 0.4
-            },
-            {
-                "date": "09/03",
-                "SAVI": 0.5
-            },
-            {
-                "date": "10/03",
-                "SAVI": 0.7
-            }
-        ],
-        
-        'AVI': [
-            {
-                "date": "07/03",
-                "AVI": 0.1
-            },
-            {
-                "date": "08/03",
-                "AVI": 0.2
-            },
-            {
-                "date": "09/03",
-                "AVI": 0.3
-            },
-            {
-                "date": "10/03",
-                "AVI": 0.3
-            }
-        ]
-    };
-    console.log(jsonData[layer]);
-    setData(jsonData[layer]);
+    console.log(layersData[layer]);
+    setData(layersData[layer]);
   };
 
 
