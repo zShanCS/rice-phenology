@@ -36,11 +36,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.33955700154764, 72.5340985983349],
-        content: "Crop Type: Kainat - 11",
+        content: "Unhealthy",
       },
       {
         position: [32.340193338283484, 72.53470116378589],
-        content: "Crop Type: Kainat -23",
+        content: "Unhealthy",
       },
     ];
     if (selectedLayer === "NDVI") {
@@ -53,7 +53,7 @@ export default function Map({ selectedLayer, date, cropType }) {
       overlayUrl = "mosaics/msavi/220625.png";
       overlayLegend = "mosaics/msavi/220625legend.png";
     }
-  } else if (date === "2022-08-27" ) {
+  } else if (date === "2022-08-27") {
     overlayBounds = [
       [32.339026750942125, 72.53446255340462],
       [32.34037087740836, 72.53530713261662],
@@ -61,11 +61,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.339526750942125, 72.53476255340462],
-        content: "Crop Type: Kainat - 17",
+        content: "Unhealthy",
       },
       {
         position: [32.34018087740836, 72.53520713261662],
-        content: "Crop Type: Kainat - 27",
+        content: "Unhealthy",
       },
     ];
     if (selectedLayer === "NDVI") {
@@ -86,11 +86,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.34021086322847, 72.53873414753222],
-        content: "Crop Type: Kainat - 11",
+        content: "Unhealthy",
       },
       {
         position: [32.341058498800944, 72.53891684062315],
-        content: "Crop Type: Kainat - 63",
+        content: "Unhealthy",
       },
     ];
 
@@ -112,11 +112,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.34081086322847, 72.53873414753222],
-        content: "Crop Type: Super Kernel - 11",
+        content: "Unhealthy",
       },
       {
         position: [32.341058498800944, 72.53849684062315],
-        content: "Crop Type: Super Kernel - 63",
+        content: "Unhealthy",
       },
     ];
     if (selectedLayer === "NDVI") {
@@ -137,11 +137,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.34062431725231, 72.53840831303031],
-        content: "Crop Type: Super Kernel - 15",
+        content: "Unhealthy",
       },
       {
         position: [32.341026743428166, 72.53873427897837],
-        content: "Crop Type: Super Kernel - 63",
+        content: "Unhealthy",
       },
     ];
     if (selectedLayer === "NDVI") {
@@ -162,11 +162,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.341004538030566, 72.53857162640408],
-        content: "Crop Type: Super Kernel - 15",
+        content: "Unhealthy",
       },
       {
         position: [32.341013679610755, 72.5390241987202],
-        content: "Crop Type: Super Kernel - 63",
+        content: "Unhealthy",
       },
     ];
     if (selectedLayer === "NDVI") {
@@ -189,11 +189,11 @@ export default function Map({ selectedLayer, date, cropType }) {
     markers = [
       {
         position: [32.339726750942125, 72.53456255340462],
-        content: "Crop Type: Kainat - 11",
+        content: "Unhealthy",
       },
       {
         position: [32.33957087740836, 72.53500713261662],
-        content: "Crop Type: Kainat - 63",
+        content: "Unhealthy",
       },
     ];
 
