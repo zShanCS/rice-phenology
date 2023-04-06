@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background: url("https://img.freepik.com/premium-photo/beautiful-green-cornfield-with-sunset-sky-background_29332-1154.jpg  ");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.recharts-default-legend{
+    color:white;
+}
