@@ -6,15 +6,7 @@ import dynamic from "next/dynamic";
 import { FaChartBar, FaChartPie } from "react-icons/fa";
 import Card from "../../components/card";
 import Barchart from "../../components/zBarChart";
-
-const DynamicPieChart = dynamic(
-  () => import("../../components/Charts/PieChart"),
-  { ssr: false }
-);
-const DynamicBarChart = dynamic(
-  () => import("../../components/Charts/BarChart"),
-  { ssr: false }
-);
+import PieChart from "../../components/zPiechart";
 
 const Index = () => {
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -132,9 +124,9 @@ const Index = () => {
           <div className="bg-black bg-opacity-25 shadow-lg px-6 md:ml-6 mt-5">
             <h3 className="text-2xl mt-5 font-bold mb-2 text-white flex items-center">
               <FaChartPie className="inline-block mr-2" />
-              Crop Distribution
+              How long each Phenological stage took?
             </h3>
-            <DynamicPieChart />
+            <PieChart />
           </div>
 
         </div>
