@@ -5,7 +5,7 @@ import {MdDone} from 'react-icons/md'
 
 export default function Card({title, number, icon}) {
   return (
-<div className="bg-black bg-opacity-20 rounded-lg shadow-xl text-white font-sans py-10 px-5 mb-6 mt-5  w-full">
+<div className="bg-black bg-opacity-50 rounded-lg shadow-xl text-white font-sans py-10 px-5 mb-6 mt-5  w-full">
     <div className='flex w-full justify-between'>
         <p className='font-bold text-lg'>{title}</p>
         {icon &&
