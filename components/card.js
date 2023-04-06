@@ -2,6 +2,7 @@ import React from 'react'
 import {BsFire} from 'react-icons/bs'
 import {BiTimeFive} from 'react-icons/bi'
 import {MdDone} from 'react-icons/md'
+import {WiHail} from 'react-icons/wi/'
 
 export default function Card({title, number, icon}) {
   return (
@@ -13,6 +14,7 @@ export default function Card({title, number, icon}) {
         {icon === 'fire' && <BsFire className="text-xl text-blue-500" />}
         {icon === 'time' && <BiTimeFive className="text-xl text-yellow-400" />}
         {icon === 'done' && <MdDone className="text-xl text-green-400" />}
+        {icon === 'ppt' && <WiHail className="text-xl text-green-400" />}
         </div>
         }
     </div>

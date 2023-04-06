@@ -28,8 +28,8 @@ export default function BaseLayout({ children, title, footer }) {
           <Header  />
         </div> */}
           <div className="fixed z-50">
-            <LowerTopBar
-            />
+            {/* <LowerTopBar
+            /> */}
           </div>
         <div
           className={`w-full m-10 mt-32 pr-2 flex flex-col ${

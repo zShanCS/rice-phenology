@@ -53,7 +53,7 @@ export default function Map({ selectedLayer, date, cropType }) {
       overlayUrl = "mosaics/msavi/220625.png";
       overlayLegend = "mosaics/msavi/220625legend.png";
     }
-  } else if (date === "2022-08-27" && cropType in ["", "Kainat"]) {
+  } else if (date === "2022-08-27" ) {
     overlayBounds = [
       [32.339026750942125, 72.53446255340462],
       [32.34037087740836, 72.53530713261662],
@@ -78,7 +78,7 @@ export default function Map({ selectedLayer, date, cropType }) {
       overlayUrl = "mosaics/msavi/220827.png";
       overlayLegend = "mosaics/msavi/220827legend.png";
     }
-  } else if (date === "2022-07-06" && cropType in ["", "Kainat"]) {
+  } else if (date === "2022-07-06") {
     overlayBounds = [
       [32.34011086322847, 72.53823414753222],
       [32.341158498800944, 72.53919684062315],
@@ -181,7 +181,7 @@ export default function Map({ selectedLayer, date, cropType }) {
     }
   }
   //xmin: 72.53375820721281, xmax: 72.53539095364809, ymin: 32.33894489182281, ymax: 32.34081353955514
-  else if (date === "2022-09-10" && cropType in ["", "Kainat"]) {
+  else if (date === "2022-09-10") {
     overlayBounds = [
       [32.339026750942125, 72.53446255340462],
       [32.34037087740836, 72.53530713261662],

@@ -2,11 +2,12 @@ import Head from "next/head";
 import Map from "../../components/Home";
 import React, { useState } from "react";
 import BaseLayout from "../../components/BaseLayout/BaseLayout";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import { FaChartBar, FaChartPie } from "react-icons/fa";
 import Card from "../../components/card";
 import Barchart from "../../components/zBarChart";
 import PieChart from "../../components/zPiechart";
+import LineChart from "../../components/zLinechart";
 
 const Index = () => {
   const [selectedIndex, setSelectedIndex] = useState(1);
@@ -19,9 +20,12 @@ const Index = () => {
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
-    setSelectedCropType("");
+
     if (event.target.value === "2022-07-19") {
       setSelectedCropType("SK");
+    }
+    else {
+      setSelectedCropType("Kainat");
     }
   };
 
@@ -32,7 +36,7 @@ const Index = () => {
   const layers = [
     { name: "NDVI", layer: "NDVI" },
     { name: "SAVI", layer: "SAVI" },
-    { name: "AVI", layer: "AVI" },
+    { name: "MSAVI", layer: "MSAVI" },
   ];
   const dates = [
     { date: "2022-06-25" },
@@ -41,7 +45,15 @@ const Index = () => {
     { date: "2022-08-27" },
     { date: "2022-09-10" },
   ];
-  const cropTypes = [{ name: "" }, { name: "SK" }];
+  const dateInfo = {
+
+    "2022-06-25": { temp: '34°C', prec: '44 cm', stage: '01 - Germination' },
+    "2022-07-06": { temp: '41°C', prec: '32 cm', stage: '02 - Tillering' },
+    "2022-07-19": { temp: '42°C', prec: '27 cm', stage: '03 - Max Tillering' },
+    "2022-08-27": { temp: '35°C', prec: '42 cm', stage: '05 - Heading' },
+    "2022-09-10": { temp: '38°C', prec: '26 cm', stage: '07 - Milk Stage' },
+  }
+  const cropTypes = [{ name: "Kainat" }, { name: "SK" }];
 
   return (
     <BaseLayout title="Home" footer={false}>
@@ -49,17 +61,19 @@ const Index = () => {
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </Head>
       <div className="w-full">
-        <span className={"flex justify-center items-center text-white text-6xl mb-8 font-2xl"}>
-          Rice Phenological Stage Detection
+        <span className={"flex justify-center items-center text-white text-4xl mb-8 font-2xl"}>
+          Rice AgriStats: Phenology Analysis and Optimizing Yield
         </span>
       </div>
       <div className="flex flex-col md:flex-row md:items-start">
         <div className="w-full md:w-2/3">
           <div className="w-full flex space-x-9">
-            <Card title={"Total Fields"} number={11} />
-            <Card title={"Crop Harvest Done"} number={'10 / 11'} icon="fire" />
-            {/* <Card title={"Jobs due"} number={17} icon="time" /> */}
-            {/* <Card title={"Jobs done"} number={12} icon="done" /> */}
+            <Card title={"Harvest Time"} number={'120 Days'} />
+            <Card title={"Phenology State"} number={dateInfo[selectedDate].stage} icon="fire" />
+          </div>
+          <div className="w-full flex space-x-9">
+            <Card title={"Temperature"} number={dateInfo[selectedDate].temp} icon="fire" />
+            <Card title={"Precipitation"} number={dateInfo[selectedDate].prec} icon="ppt" />
           </div>
           <div className=" bg-white shadow-lg h-full">
             <Map
@@ -75,6 +89,16 @@ const Index = () => {
             </h3>
             <Barchart layer={layers[selectedIndex].name} />
           </div>
+
+
+          <div className="flex justify-center items-center bg-black bg-opacity-50 shadow-lg py-5 px-6 md:ml-6 mt-5">
+            <h3 className="w-full text-2xl mt-5 font-bold mb-4 text-white flex items-center">
+              <FaChartPie className="inline-block mr-2" />
+              Overall Growth Timeline:
+            </h3>
+            <LineChart selectedCropType={selectedCropType} selectedIndex={layers[selectedIndex].name} />
+          </div>
+
         </div>
         <div className="flex flex-col font-sans w-1/3">
           <div className="bg-black bg-opacity-50 text-white shadow-lg px-6 md:ml-6 mt-5">
@@ -119,7 +143,7 @@ const Index = () => {
                 >
                   {cropTypes.map((cropType, index) => (
                     <option key={index} value={cropType.name}>
-                      {cropType.name === "SK" ? "Super Kernel" : "None"}
+                      {cropType.name === "SK" ? "Super Kernel" : "Kainat"}
                     </option>
                   ))}
                 </select>
@@ -133,7 +157,6 @@ const Index = () => {
             </h3>
             <PieChart />
           </div>
-
         </div>
       </div>
     </BaseLayout>
