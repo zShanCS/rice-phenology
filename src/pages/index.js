@@ -82,8 +82,8 @@ const Index = () => {
               cropType={selectedCropType}
             />
           </div>
-          <div className="bg-black font-sans  bg-opacity-50 mt-5 pt-5  shadow-lg px-6 mb-6 md:ml-6">
-            <h3 className="text-xl font-bold mb-5 flex items-center text-white ">
+          <div className=" flex justify-center flex-col items-center  bg-black font-sans  bg-opacity-50 mt-5 pt-5  shadow-lg px-6 mb-6 md:ml-6">
+            <h3 className="w-full text-xl font-bold mb-5 flex items-center text-white ">
               <FaChartBar className="inline-block mr-2" />
               Crop Growth (Change of {layers[selectedIndex].name} over time)
             </h3>
@@ -91,7 +91,7 @@ const Index = () => {
           </div>
 
 
-          <div className="flex justify-center items-center bg-black bg-opacity-50 shadow-lg py-5 px-6 md:ml-6 mt-5">
+          <div className="flex justify-center flex-col items-center bg-black bg-opacity-50 shadow-lg py-5 px-6 md:ml-6 mt-5">
             <h3 className="w-full text-2xl mt-5 font-bold mb-4 text-white flex items-center">
               <FaChartPie className="inline-block mr-2" />
               Overall Growth Timeline:
