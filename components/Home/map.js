@@ -1,14 +1,12 @@
-import {
-  MapContainer,
-  TileLayer,
-  ImageOverlay,
-  LayersControl,
-  Tooltip,
-  Circle,
-} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
-import { Icon } from "leaflet";
+import {
+  Circle,
+  ImageOverlay,
+  MapContainer,
+  TileLayer,
+  Tooltip
+} from "react-leaflet";
 
 export default function Map({ selectedLayer, date, cropType }) {
   const [opacity, setOpacity] = useState(0.5);
@@ -30,8 +28,7 @@ export default function Map({ selectedLayer, date, cropType }) {
   let markers = [];
 
   // Set the appropriate overlay URL and bounds based on the selected date and layer
-  if (date === "2022-06-25" && cropType === "") {
-    overlayUrl = "mosaics/NDVI220625.png";
+  if (date === "2022-06-25") {
     overlayBounds = [
       [32.33925700144764, 72.5339985983349],
       [32.340393338283484, 72.53513116378589],
@@ -47,14 +44,16 @@ export default function Map({ selectedLayer, date, cropType }) {
       },
     ];
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220625legend.png";
+      overlayUrl = "mosaics/ndvi/220625.png";
+      overlayLegend = "mosaics/ndvi/220625legend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220625legendsavi.png";
+      overlayUrl = "mosaics/savi/220625.png";
+      overlayLegend = "mosaics/savi/220625legend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220625legendmsavi.png";
+      overlayUrl = "mosaics/msavi/220625.png";
+      overlayLegend = "mosaics/msavi/220625legend.png";
     }
-  } else if (date === "2022-08-27" && cropType === "") {
-    overlayUrl = "mosaics/NDVI220827.png";
+  } else if (date === "2022-08-27" && cropType in ["", "Kainat"]) {
     overlayBounds = [
       [32.339026750942125, 72.53446255340462],
       [32.34037087740836, 72.53530713261662],
@@ -70,14 +69,16 @@ export default function Map({ selectedLayer, date, cropType }) {
       },
     ];
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220827legend.png";
+      overlayUrl = "mosaics/ndvi/220827.png";
+      overlayLegend = "mosaics/ndvi/220827legend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220827legendsavi.png";
+      overlayUrl = "mosaics/savi/220827.png";
+      overlayLegend = "mosaics/savi/220827legend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220827legendmsavi.png";
+      overlayUrl = "mosaics/msavi/220827.png";
+      overlayLegend = "mosaics/msavi/220827legend.png";
     }
-  } else if (date === "2022-07-06" && cropType === "") {
-    overlayUrl = "mosaics/NDVI220706.png";
+  } else if (date === "2022-07-06" && cropType in ["", "Kainat"]) {
     overlayBounds = [
       [32.34011086322847, 72.53823414753222],
       [32.341158498800944, 72.53919684062315],
@@ -94,14 +95,16 @@ export default function Map({ selectedLayer, date, cropType }) {
     ];
 
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220706legend.png";
+      overlayUrl = "mosaics/ndvi/220706.png";
+      overlayLegend = "mosaics/ndvi/220706legend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220706legendsavi.png";
+      overlayUrl = "mosaics/savi/220706.png";
+      overlayLegend = "mosaics/savi/220706legend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220706legendmsavi.png";
+      overlayUrl = "mosaics/msavi/220706.png";
+      overlayLegend = "mosaics/msavi/220706legend.png";
     }
   } else if (date === "2022-07-06" && cropType === "SK") {
-    overlayUrl = "mosaics/NDVI220706SK.png";
     overlayBounds = [
       [32.34011086322847, 72.53823414753222],
       [32.341158498800944, 72.53919684062315],
@@ -117,14 +120,16 @@ export default function Map({ selectedLayer, date, cropType }) {
       },
     ];
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220706SKlegend.png";
+      overlayUrl = "mosaics/ndvi/220706SK.png";
+      overlayLegend = "mosaics/ndvi/220706SKlegend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220706SKlegendsavi.png";
+      overlayUrl = "mosaics/savi/220706SK.png";
+      overlayLegend = "mosaics/savi/220706SKlegend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220706SKlegendmsavi.png";
+      overlayUrl = "mosaics/msavi/220706SK.png";
+      overlayLegend = "mosaics/msavi/220706SKlegend.png";
     }
   } else if (date === "2022-07-19" && cropType === "SK") {
-    overlayUrl = "mosaics/NDVI220719.png";
     overlayBounds = [
       [32.34011431725231, 72.53830831303031],
       [32.341136743428166, 72.53913427897837],
@@ -140,14 +145,16 @@ export default function Map({ selectedLayer, date, cropType }) {
       },
     ];
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220719legend.png";
+      overlayUrl = "mosaics/ndvi/220719SK.png";
+      overlayLegend = "mosaics/ndvi/220719SKlegend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220719legendsavi.png";
+      overlayUrl = "mosaics/savi/220719SK.png";
+      overlayLegend = "mosaics/savi/220719SKlegend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220719legendmsavi.png";
+      overlayUrl = "mosaics/msavi/220719SK.png";
+      overlayLegend = "mosaics/msavi/220719SKlegend.png";
     }
   } else if (date === "2022-08-27" && cropType === "SK") {
-    overlayUrl = "mosaics/NDVI220827SK.png";
     overlayBounds = [
       [32.340104538030566, 72.53827162640408],
       [32.341533679610755, 72.5394241987202],
@@ -163,16 +170,18 @@ export default function Map({ selectedLayer, date, cropType }) {
       },
     ];
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220827SKlegend.png";
+      overlayUrl = "mosaics/ndvi/220827SK.png";
+      overlayLegend = "mosaics/ndvi/220827SKlegend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220827SKlegendsavi.png";
+      overlayUrl = "mosaics/savi/220827SK.png";
+      overlayLegend = "mosaics/savi/220827SKlegend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220827SKlegendmsavi.png";
+      overlayUrl = "mosaics/msavi/220827SK.png";
+      overlayLegend = "mosaics/msavi/220827SKlegend.png";
     }
   }
   //xmin: 72.53375820721281, xmax: 72.53539095364809, ymin: 32.33894489182281, ymax: 32.34081353955514
-  else if (date === "2022-09-10" && cropType === "") {
-    overlayUrl = "mosaics/NDVI220910.png";
+  else if (date === "2022-09-10" && cropType in ["", "Kainat"]) {
     overlayBounds = [
       [32.339026750942125, 72.53446255340462],
       [32.34037087740836, 72.53530713261662],
@@ -189,11 +198,14 @@ export default function Map({ selectedLayer, date, cropType }) {
     ];
 
     if (selectedLayer === "NDVI") {
-      overlayLegend = "mosaics/NDVI220910legend.png";
+      overlayUrl = "mosaics/ndvi/220910.png";
+      overlayLegend = "mosaics/ndvi/220910legend.png";
     } else if (selectedLayer === "SAVI") {
-      overlayLegend = "mosaics/NDVI220910legendsavi.png";
+      overlayUrl = "mosaics/savi/220910.png";
+      overlayLegend = "mosaics/savi/220910legend.png";
     } else {
-      overlayLegend = "mosaics/NDVI220910legendmsavi.png";
+      overlayUrl = "mosaics/msavi/220910.png";
+      overlayLegend = "mosaics/msavi/220910legend.png";
     }
   }
   console.log("The url and bounds are", overlayUrl, overlayBounds);
