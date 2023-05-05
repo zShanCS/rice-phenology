@@ -20,12 +20,11 @@ const Explore = () => {
     console.log(JSON.stringify({ variant, date, filter }))
 
     function MapFly({ overlayBounds }) {
-        console.log(overlayBounds)
         const map = useMap();
         setTimeout(
             () => {
-                // map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
-            }, 8000
+                map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
+            }, 1000
         )
     }
 
@@ -86,11 +85,11 @@ const Explore = () => {
 
                     url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
                 />
-                {overlayUrl && (
+                {mosaic_data[variant][date] && (
                     <>
                         <ImageOverlay
-                            url={overlayUrl}
-                            bounds={overlayBounds}
+                            url={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_src`]}
+                            bounds={mosaic_data[variant][date]['mosaic']['overlayBounds']}
                             opacity={opacity}
                         />
                         <MapFly overlayBounds={overlayBounds} />
