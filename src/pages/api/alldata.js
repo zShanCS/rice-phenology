@@ -310,14 +310,14 @@ export const mosaic_data = {
             "NDVI": 0.2,
             "SAVI": 0.3,
             "MSAVI": 0.4,
-            "growthStage": "Tillering",
+            "stage": "Tillering",
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220625.png",
-                "ndvi_legend": "mosaics/ndvi/220625_legend.png",
+                "ndvi_legend": "mosaics/ndvi/220625legend.png",
                 "savi_src": "mosaics/savi/220625.png",
-                "savi_legend": "mosaics/savi/220625_legend.png",
+                "savi_legend": "mosaics/savi/220625legend.png",
                 "msavi_src": "mosaics/msavi/220625.png",
-                "msavi_legend": "mosaics/msavi/220625_legend.png",
+                "msavi_legend": "mosaics/msavi/220625legend.png",
                 "overlayBounds": [
                     [
                         32.33925700144764,
@@ -334,14 +334,14 @@ export const mosaic_data = {
             "NDVI": 0.3,
             "SAVI": 0.4,
             "MSAVI": 0.5,
-            "growthStage": "Tillering",
+            "stage": "Tillering",
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220706.png",
-                "ndvi_legend": "mosaics/ndvi/220706_legend.png",
+                "ndvi_legend": "mosaics/ndvi/220706legend.png",
                 "savi_src": "mosaics/savi/220706.png",
-                "savi_legend": "mosaics/savi/220706_legend.png",
+                "savi_legend": "mosaics/savi/220706legend.png",
                 "msavi_src": "mosaics/msavi/220706.png",
-                "msavi_legend": "mosaics/msavi/220706_legend.png",
+                "msavi_legend": "mosaics/msavi/220706legend.png",
                 "overlayBounds": [
                     // [
                     //     32.34011086322847,
@@ -368,14 +368,14 @@ export const mosaic_data = {
             "NDVI": 0.5,
             "SAVI": 0.6,
             "MSAVI": 0.7,
-            "growthStage": "Flowering",
+            "stage": "Flowering",
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220827.png",
-                "ndvi_legend": "mosaics/ndvi/220827_legend.png",
+                "ndvi_legend": "mosaics/ndvi/220827legend.png",
                 "savi_src": "mosaics/savi/220827.png",
-                "savi_legend": "mosaics/savi/220827_legend.png",
+                "savi_legend": "mosaics/savi/220827legend.png",
                 "msavi_src": "mosaics/msavi/220827.png",
-                "msavi_legend": "mosaics/msavi/220827_legend.png",
+                "msavi_legend": "mosaics/msavi/220827legend.png",
                 "overlayBounds": [
                     [
                         32.339026750942125,
@@ -392,14 +392,14 @@ export const mosaic_data = {
             "NDVI": 0.6,
             "SAVI": 0.7,
             "MSAVI": 0.8,
-            "growthStage": "Ripening",
+            "stage": "Ripening",
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220910.png",
-                "ndvi_legend": "mosaics/ndvi/220910_legend.png",
+                "ndvi_legend": "mosaics/ndvi/220910legend.png",
                 "savi_src": "mosaics/savi/220910.png",
-                "savi_legend": "mosaics/savi/220910_legend.png",
+                "savi_legend": "mosaics/savi/220910legend.png",
                 "msavi_src": "mosaics/msavi/220910.png",
-                "msavi_legend": "mosaics/msavi/220910_legend.png",
+                "msavi_legend": "mosaics/msavi/220910legend.png",
                 "overlayBounds": [
                     [
                         32.339026750942125,
@@ -473,9 +473,9 @@ export const mosaic_data = {
         },
         "2022-08-27": {
             "stage": "Late",
-            "NDVI": 0.2,
-            "SAVI": 0.7,
-            "MSAVI": 0.8,
+            "NDVI": 0.6,
+            "SAVI": 0.5,
+            "MSAVI": 0.5,
             "mosaic": "220827SK.png",
             "legend": "220827SKlegend.png",
             "mosaic": {
