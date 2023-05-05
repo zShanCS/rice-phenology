@@ -21,23 +21,14 @@ const Explore = () => {
 
     function MapFly({ overlayBounds }) {
         const map = useMap();
-        setTimeout(
-            () => {
-                map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
-            }, 1000
-        )
+        map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
+
     }
 
-    const center = [32.0835, 72.6715];
 
     const router = useRouter();
 
 
-    let overlayBounds = [
-        [32.339026750942125, 72.53446255340462],
-        [32.34037087740836, 72.53530713261662],
-    ];
-    let overlayUrl = "mosaics/ndvi/220910.png";
     let opacity = '0.8';
 
 
@@ -92,7 +83,7 @@ const Explore = () => {
                             bounds={mosaic_data[variant][date]['mosaic']['overlayBounds']}
                             opacity={opacity}
                         />
-                        <MapFly overlayBounds={overlayBounds} />
+                        <MapFly overlayBounds={mosaic_data[variant][date]['mosaic']['overlayBounds']} />
                     </>
                 )}
             </MapContainer>

@@ -208,6 +208,7 @@ export default function Map({ selectedLayer, date, cropType }) {
       overlayLegend = "mosaics/msavi/220910legend.png";
     }
   }
+  
   console.log("The url and bounds are", overlayUrl, overlayBounds);
 
   return (
@@ -258,6 +259,7 @@ export default function Map({ selectedLayer, date, cropType }) {
         ))}
 
         {/* Render the selected overlay if is set */}
+        {console.log('zedit',overlayBounds)}
         {overlayUrl && (
           <ImageOverlay
             url={overlayUrl}
