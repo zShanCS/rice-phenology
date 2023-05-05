@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import BaseLayout from "../../components/BaseLayout/BaseLayout";
 // import dynamic from "next/dynamic";
 import { FaChartBar, FaChartPie } from "react-icons/fa";
+
+import 'mapbox-gl/dist/mapbox-gl.css';
+
 import Card from "../../components/card";
 import Barchart from "../../components/zBarChart";
 import PieChart from "../../components/zPiechart";

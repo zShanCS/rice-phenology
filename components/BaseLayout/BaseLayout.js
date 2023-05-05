@@ -4,7 +4,7 @@ import Footer from "../Footer";
 import Header from "../Header";
 import LowerTopBar from "../lowerTopBar";
 
-export default function BaseLayout({ children, title, footer }) {
+export default function BaseLayout({ children, title, footer, allowFullScreen = false, showTopBar = true }) {
   const [sideBar, setSideBar] = useState(false);
 
   return (
@@ -27,16 +27,14 @@ export default function BaseLayout({ children, title, footer }) {
         {/* <div className="w-full h-[60px] fixed top-0 z-50 ">
           <Header  />
         </div> */}
-          <div className="fixed z-50">
-            <LowerTopBar
-            />
-          </div>
+        {showTopBar && <div className="fixed z-50">
+          <LowerTopBar
+          />
+        </div>}
         <div
-          className={`w-full m-10 mt-32 pr-2 flex flex-col ${
-            footer ? "justify-between" : ""
-          }  ease-in-out bg-lightWhite dark:bg-fields relative duration-300 ${
-            sideBar ? " md:translate-x-[200px] md:!w-[calc(100%-200px)] " : ""
-          }`}
+          className={`w-full ${allowFullScreen ? "" : "m-10 mt-32 pr-2"} flex flex-col ${footer ? "justify-between" : ""
+            }  ease-in-out bg-lightWhite dark:bg-fields relative duration-300 ${sideBar ? " md:translate-x-[200px] md:!w-[calc(100%-200px)] " : ""
+            }`}
         >
           {children}
           {footer && <Footer />}

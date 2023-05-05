@@ -302,3 +302,163 @@ export const Kainat_line_data = [
         "MSAVI": 0.2
     },
 ]
+
+export const mosaic_data = {
+
+    'Kainat': {
+        "2022-06-25": {
+            "NDVI": 0.2,
+            "SAVI": 0.3,
+            "MSAVI": 0.4,
+            "growthStage": "Tillering",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220625K.png",
+                "ndvi_legend": "mosaics/ndvi/220625K_legend.png",
+                "savi_src": "mosaics/savi/220625K.png",
+                "savi_legend": "mosaics/savi/220625K_legend.png",
+                "msavi_src": "mosaics/msavi/220625K.png",
+                "msavi_legend": "mosaics/msavi/220625K_legend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        },
+        "2022-07-06": {
+            "NDVI": 0.3,
+            "SAVI": 0.4,
+            "MSAVI": 0.5,
+            "growthStage": "Tillering",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220706K.png",
+                "ndvi_legend": "mosaics/ndvi/220706K_legend.png",
+                "savi_src": "mosaics/savi/220706K.png",
+                "savi_legend": "mosaics/savi/220706K_legend.png",
+                "msavi_src": "mosaics/msavi/220706K.png",
+                "msavi_legend": "mosaics/msavi/220706K_legend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        },
+        "2022-07-19": {
+            "NDVI": 0.4,
+            "SAVI": 0.5,
+            "MSAVI": 0.6,
+            "growthStage": "Boot",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220719K.png",
+                "ndvi_legend": "mosaics/ndvi/220719K_legend.png",
+                "savi_src": "mosaics/savi/220719K.png",
+                "savi_legend": "mosaics/savi/220719K_legend.png",
+                "msavi_src": "mosaics/msavi/220719K.png",
+                "msavi_legend": "mosaics/msavi/220719K_legend.png",
+                "overlayBounds": [
+                    [32.34018682243517, 72.53279440498352],
+                    [32.34153091245881, 72.53363898637425]
+                ]
+            }
+        },
+        "2022-08-27": {
+            "NDVI": 0.5,
+            "SAVI": 0.6,
+            "MSAVI": 0.7,
+            "growthStage": "Flowering",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220827.png",
+                "ndvi_legend": "mosaics/ndvi/220827_legend.png",
+                "savi_src": "mosaics/savi/220827.png",
+                "savi_legend": "mosaics/savi/220827_legend.png",
+                "msavi_src": "mosaics/msavi/220827.png",
+                "msavi_legend": "mosaics/msavi/220827_legend.png",
+                "overlayBounds": [
+                    [32.34018682243517, 72.53279440498352],
+                    [32.34153091245881, 72.53363898637425]
+                ]
+            }
+        },
+        "2022-09-10": {
+            "NDVI": 0.6,
+            "SAVI": 0.7,
+            "MSAVI": 0.8,
+            "growthStage": "Ripening",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220910.png",
+                "ndvi_legend": "mosaics/ndvi/220910_legend.png",
+                "savi_src": "mosaics/savi/220910.png",
+                "savi_legend": "mosaics/savi/220910_legend.png",
+                "msavi_src": "mosaics/msavi/220910.png",
+                "msavi_legend": "mosaics/msavi/220910_legend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        }
+    },
+
+    'Super Kernel': {
+        "2022-07-06": {
+            "stage": "Early",
+            "NDVI": 0.4,
+            "SAVI": 0.2,
+            "MSAVI": 0.1,
+            "mosaic": "220706SK.png",
+            "legend": "220706SKlegend.png",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220706SK.png",
+                "ndvi_legend": "mosaics/ndvi/220706SKlegend.png",
+                "savi_src": "mosaics/savi/220706SK.png",
+                "savi_legend": "mosaics/savi/220706SKlegend.png",
+                "msavi_src": "mosaics/msavi/220706SK.png",
+                "msavi_legend": "mosaics/msavi/220706SKlegend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        },
+        "2022-07-19": {
+            "stage": "Mid",
+            "NDVI": 0.3,
+            "SAVI": 0.6,
+            "MSAVI": 0.4,
+            "mosaic": "220719SK_SAVI.png",
+            "legend": "220719SKlegend.png",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220719SK.png",
+                "ndvi_legend": "mosaics/ndvi/220719SKlegend.png",
+                "savi_src": "mosaics/savi/220719SK.png",
+                "savi_legend": "mosaics/savi/220719SKlegend.png",
+                "msavi_src": "mosaics/msavi/220719SK.png",
+                "msavi_legend": "mosaics/msavi/220719SKlegend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        },
+        "2022-08-27": {
+            "stage": "Late",
+            "NDVI": 0.2,
+            "SAVI": 0.7,
+            "MSAVI": 0.8,
+            "mosaic": "220827SK.png",
+            "legend": "220827SKlegend.png",
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220827SK.png",
+                "ndvi_legend": "mosaics/ndvi/220827SKlegend.png",
+                "savi_src": "mosaics/savi/220827SK.png",
+                "savi_legend": "mosaics/savi/220827SKlegend.png",
+                "msavi_src": "mosaics/msavi/220827SK.png",
+                "msavi_legend": "mosaics/msavi/220827SKlegend.png",
+                "overlayBounds": [
+                    [32.339026750942125, 72.53446255340462],
+                    [32.34037087740836, 72.53530713261662]
+                ]
+            }
+        }
+    }
+
+}

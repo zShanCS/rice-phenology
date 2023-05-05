@@ -3,12 +3,34 @@
 @tailwind utilities;
 
 
-body{
+body {
     background: url("https://img.freepik.com/premium-photo/beautiful-green-cornfield-with-sunset-sky-background_29332-1154.jpg  ");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.recharts-default-legend{
-    color:white;
+.recharts-default-legend {
+    color: white;
+}
+
+.map-container {
+    position: relative;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+}
+.non-map-body{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.sidebar {
+    background-color: rgba(35, 55, 75, 0.9);
+    color: #fff;
+    padding: 6px 12px;
+    font-family: monospace;
+    
+    margin: 12px;
+    border-radius: 4px;
 }
