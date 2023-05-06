@@ -11,7 +11,7 @@ import {
 
 import { SK_line_data, Kainat_line_data } from "@/pages/api/alldata";
 
-const Linechart = ({selectedCropType, selectedIndex}) => {
+const IndicesLinechart = ({ selectedCropType, selectedIndex }) => {
   // const data = [
   //   { name: "Jan", value: 200 },
   //   { name: "Feb", value: 100 },
@@ -28,14 +28,14 @@ const Linechart = ({selectedCropType, selectedIndex}) => {
   // ];
   const [data, setData] = useState([]);
 
- 
+
 
   useEffect(
-    ()=>{
+    () => {
       console.log(selectedCropType, selectedIndex)
-      if (selectedCropType == 'SK'){
+      if (selectedCropType == 'SK') {
         //super kernel
-        
+
         console.log(SK_line_data)
         setData(SK_line_data)
       }
@@ -51,7 +51,7 @@ const Linechart = ({selectedCropType, selectedIndex}) => {
   return (
     <LineChart width={500} height={300} data={data}>
       <defs>
-      <linearGradient id="bg-gradient1" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="bg-gradient1" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#833ab4" />
           <stop offset="100%" stopColor="#fd1d1d" />
         </linearGradient>
@@ -64,8 +64,8 @@ const Linechart = ({selectedCropType, selectedIndex}) => {
           <stop offset="100%" stopColor="#185a9d" />
         </linearGradient>
       </defs>
-      <XAxis dataKey="date" tick={{fill:"#fff"}} />
-      <YAxis tick={{fill:"#fff"}} />
+      <XAxis dataKey="date" tick={{ fill: "#fff" }} />
+      <YAxis tick={{ fill: "#fff" }} />
       <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
       <Legend />
@@ -94,4 +94,4 @@ const Linechart = ({selectedCropType, selectedIndex}) => {
   );
 };
 
-export default Linechart;
+export default IndicesLinechart;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { mosaic_data } from "@/pages/api/alldata";
 import { useRouter } from "next/router";
 
-const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, variants, dates, filters }) => {
+const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, variants, dates, filters, absolutePosition = true, showVariantOnly = false }) => {
 
   const handleVariantChange = (value) => {
     setVariant(value);
@@ -18,10 +18,13 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
 
   return (
     // <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 backdrop-filter backdrop-blur-md z-10">
-    <div className="fixed left-2 top-1/2 -translate-y-1/2  w-64 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black">
-      <div className="flex justify-center items-center w-full border-b-2 mb-3 p-3">
-        <h1 className="text-lg text-white text-center">Explore Rice Dataset</h1>
-      </div>
+    <div className={`${absolutePosition ? 'fixed left-2 top-1/2 -translate-y-1/2' : ''}   w-64 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black`}>
+
+      {!showVariantOnly &&
+        <div className="flex justify-center items-center w-full border-b-2 mb-3 p-3">
+          <h1 className="text-lg text-white text-center">Explore Rice Dataset</h1>
+        </div>
+      }
       <div className="mb-4">
         <label htmlFor="variant" className="block font-medium mb-2 text-white">
           Rice Category
@@ -35,7 +38,7 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
         </div>
 
       </div>
-      {date && <div className="mb-4">
+      {!showVariantOnly && date && <div className="mb-4">
         <label htmlFor="date" className="block font-medium mb-2 text-white">
           Collection Date
         </label>
@@ -53,7 +56,7 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
           ))}
         </select>
       </div>}
-      {filters && <div className="mb-4">
+      {!showVariantOnly && filters && <div className="mb-4">
         <label htmlFor="filter" className="block font-medium mb-2 text-white">
           Vegetation Index
         </label>
