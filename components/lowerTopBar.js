@@ -44,14 +44,14 @@ export default function LowerTopBar() {
         </div>
         <div
           className={`p-4 transition duration-300 ${
-            isActive("/mapbox")
+            isActive("/explore")
               ? "border-b-4 border-green-600"
               : "hover:border-b-4 border-green-600 cursor-pointer"
           }`}
         >
-          <Link href="/mapbox">
+          <Link href="/explore">
             <span className={`flex items-center text-lg font-medium`}>
-              MapBox
+              Explore Dataset
             </span>
           </Link>
         </div>
