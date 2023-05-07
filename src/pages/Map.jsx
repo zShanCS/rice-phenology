@@ -19,7 +19,8 @@ import { GiSandsOfTime } from 'react-icons/gi';
 import { BiTimeFive } from 'react-icons/bi';
 import Modal from '../../components/zModal';
 import TimeComparisonChart from '../../components/zTimeComparisonChart';
-import generateTimeTakenData from './../../utils/GenerateData';
+import { generateTimeTakenData, generateFilterData } from './../../utils/GenerateData';
+import FilterComparisonChart from '../../components/zFilterComparisonChart';
 
 const Explore = () => {
 
@@ -30,7 +31,7 @@ const Explore = () => {
     const [date, setDate] = useState(router.query['date'] ?? Object.getOwnPropertyNames(mosaic_data[variant])[0]);
     const [filter, setFilter] = useState(['NDVI', 'SAVI', 'MSAVI'].includes(router.query['filter']) ? router.query['filter'] : 'NDVI');
 
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [modalState, setModalState] = useState({ isOpen: false, timeGraph: true });
     const [opacity, setOpacity] = useState(0.8);
 
     function handleOpacityChange(event) {
@@ -223,38 +224,57 @@ const Explore = () => {
                         <div className="fixed top-2 right-2 w-80 rounded-xl text-xl text-white bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-6 py-3 z-20 ">
                             <h1>Growth Stage: {mosaic_data[variant][date]['stage']}</h1>
                             <div className="text-xs">
-                                <p className='flex align-middle items-center justify-start'>
-                                    <img className='mr-2' height={20} width={20} src="xndvi.png" alt="NDVI" />
-                                    NDVI: {mosaic_data[variant][date]['NDVI']}
-                                </p>
-
-                                <p className='flex align-middle items-center justify-start my-1'>
-                                    <img className='mr-2' height={20} width={20} src="savi.png" alt="SAVI" />
-                                    SAVI: {mosaic_data[variant][date]['SAVI']}
-                                </p>
-
-                                <p className='flex align-middle items-center justify-start my-1'>
-                                    <img className='mr-2' height={20} width={20} src="msavi.png" alt="MSAVI" />
-                                    MSAVI: {mosaic_data[variant][date]['MSAVI']}
-                                </p>
-
-                                <div className="flex gap-2 my-2">
-                                    <p className='text-xs flex flex-row items-center mr-1'> <BiTimeFive /> Time Taken: {mosaic_data[variant][date]['timeTaken']} days</p>
-                                    <p className='text-xs flex flex-row items-center mr-1'> <GiSandsOfTime /> Ideal Time: {ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.ideal_days} days</p>
-                                </div>
-                                <div>
-                                    <h2 onClick={(e) => { console.log(e); setModalOpen(true); }}>Analysis</h2>
-                                    <p className='w-full text-left'>
-                                        {timeDiff().includes('equal') ?
-                                            ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_equal
-                                            :
-                                            timeDiff().includes('more') ?
-                                                ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_more
-                                                :
-                                                ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_less
-                                        }
-
+                                <div className='mt-3 border-r-[1px] border-gray-100 border-opacity-50 pr-2'>
+                                    <div className="flex justify-between text-base items-center ">
+                                        <p>Indices at {mosaic_data[variant][date]['stage']} stage</p>
+                                        <div onClick={(e) => { console.log(e); setModalState({ isOpen: true, timeGraph: false }); }} className='border-2 border-white rounded-full hover:bg-white hover:text-black cursor-pointer px-2 py-1 '>
+                                            Compare
+                                        </div>
+                                    </div>
+                                    <p className='flex align-middle items-center justify-start'>
+                                        <img className='mr-2' height={20} width={20} src="xndvi.png" alt="NDVI" />
+                                        NDVI: {mosaic_data[variant][date]['NDVI']}
                                     </p>
+
+                                    <p className='flex align-middle items-center justify-start my-1'>
+                                        <img className='mr-2' height={20} width={20} src="savi.png" alt="SAVI" />
+                                        SAVI: {mosaic_data[variant][date]['SAVI']}
+                                    </p>
+
+                                    <p className='flex align-middle items-center justify-start my-1'>
+                                        <img className='mr-2' height={20} width={20} src="msavi.png" alt="MSAVI" />
+                                        MSAVI: {mosaic_data[variant][date]['MSAVI']}
+                                    </p>
+                                </div>
+
+
+                                <div className='mt-6 border-r-[1px] border-gray-100 border-opacity-50 pr-2'>
+                                    <div className="flex justify-between text-base items-center ">
+                                        <p className='text-base'>Time Taken at this stage</p>
+                                        <div onClick={(e) => { console.log(e); setModalState({ isOpen: true, timeGraph: true }); }} className='border-2 border-white rounded-full hover:bg-white hover:text-black cursor-pointer px-2 py-1 '>
+                                            Compare
+                                        </div>
+                                    </div>
+
+                                    <div className="flex gap-2 my-2">
+                                        <p className='text-xs flex flex-row items-center mr-1'> <BiTimeFive /> Time Taken: {mosaic_data[variant][date]['timeTaken']} days</p>
+                                        <p className='text-xs flex flex-row items-center mr-1'> <GiSandsOfTime /> Ideal Time: {ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.ideal_days} days</p>
+                                    </div>
+
+                                    <div>
+                                        <h2> Analysis</h2>
+                                        <p className='w-full text-left'>
+                                            {timeDiff().includes('equal') ?
+                                                ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_equal
+                                                :
+                                                timeDiff().includes('more') ?
+                                                    ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_more
+                                                    :
+                                                    ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_less
+                                            }
+
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -272,7 +292,7 @@ const Explore = () => {
 
                         <div className="fixed bottom-2 right-2 flex flex-col content-end items-end">
                             <div className="rounded-xl  mb-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md px-1 py-1 z-20 text-black">
-                                <img src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt=""  />
+                                <img src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt="" />
                             </div>
 
                             <div className="w-44 flex items-center justify-center rounded-lg  bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-5 py-1 z-20 text-black">
@@ -288,12 +308,12 @@ const Explore = () => {
                                 />
                             </div>
                         </div>
-                        <Modal isOpen={isModalOpen} setIsOpen={setModalOpen} title={'Growth Time Analysis'}>
-                            <div className="flex flex-row justify-center align-middle  items-center">
-
-                                <Sidebar showVariantOnly={true} absolutePosition={false} variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} />
-                                
-                                <TimeComparisonChart data={generateTimeTakenData(mosaic_data, ideal_stages, variant)} />
+                        <Modal isOpen={modalState.isOpen} setIsOpen={setModalState} title={`${modalState.timeGraph ? `Growth Time Analysis of ${variant}` : `Indices Comparison of ${variant} over time`}`}>
+                            <div className="flex flex-col justify-center align-middle  items-center gap-3">
+                                {/* <Sidebar showVariantOnly={true} absolutePosition={false} variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} /> */}
+                                <div className="mt-5"></div>
+                                {modalState.timeGraph && <TimeComparisonChart data={generateTimeTakenData(mosaic_data, ideal_stages, variant)} />}
+                                {!modalState.timeGraph && <FilterComparisonChart data={generateFilterData(mosaic_data, variant)} />}
                             </div>
                         </Modal>
                     </>

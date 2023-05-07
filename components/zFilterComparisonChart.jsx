@@ -30,29 +30,29 @@ import { LineChart as ChartLineChart, Line as ChartLine, XAxis as ChartXAxis, YA
 //     },
 // ];
 
-function TimeComparisonChart({ data }) {
+function FilterComparisonChart({ data }) {
     console.log('data', data);
     return (
-
         <>
             <ChartLineChart
                 width={700}
                 height={300}
                 data={data}
+                title='Index Value Comparison over time'
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
             >
                 <ChartCartesianGrid strokeDasharray="3 3" />
-                <ChartXAxis dataKey="name" />
+                <ChartXAxis dataKey="date"  />
                 <ChartYAxis  />
                 <ChartTooltip />
                 <ChartLegend />
-                <ChartLine type="monotone" dataKey="ideal" stroke="#8884d8" activeDot={{ r: 4 }} />
-                <ChartLine type="monotone" dataKey="actual" stroke="#82ca9d" activeDot={{ r: 4 }} />
+                <ChartLine type="monotone" dataKey="NDVI" stroke="#8884d8" activeDot={{ r: 4 }} />
+                <ChartLine type="monotone" dataKey="SAVI" stroke="#82ca9d" activeDot={{ r: 4 }} />
+                <ChartLine type="monotone" dataKey="MSAVI" stroke="#83fa4e" activeDot={{ r: 4 }} />
             </ChartLineChart>
 
-            <p className='w-full text-center'>X-Axis: Stage, Y-axis: Days</p>
+            <p className='w-full text-center'>X-Axis: Index, Y-axis: Index Value</p>
         </>
     );
 }
-
-export default TimeComparisonChart;;
+export default FilterComparisonChart;;
