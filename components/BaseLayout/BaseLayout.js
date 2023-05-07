@@ -11,7 +11,7 @@ export default function BaseLayout({ children, title, footer, allowFullScreen = 
     <div className="flex flex-col h-full font-jost  overflow-hidden">
       <Head>
         <title>{title}</title>
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="xndvi.png" />
         {/* google fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
         <link
