@@ -12,7 +12,7 @@ export default function BaseLayout({ children, title, footer, allowFullScreen = 
       <Head>
         <title>{title}</title>
         
-        <meta name="viewport" content="width=800, initial-scale=0" />
+        <meta name="viewport" content="width=600, initial-scale=0" />
         <link rel="shortcut icon" href="xndvi.png" />
         {/* google fonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
