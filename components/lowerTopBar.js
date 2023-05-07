@@ -16,7 +16,7 @@ export default function LowerTopBar() {
       className=" w-screen bg-black text-slate-200 bg-opacity-50 font-sans shadow-lg flex justify-center "
     >
       <div className="flex gap-x-5">
-        <div
+        {/* <div
           className={`p-4 transition duration-300 ${
             isActive("/")
               ? "border-b-4 border-green-600"
@@ -28,7 +28,7 @@ export default function LowerTopBar() {
               Main
             </span>
           </Link>
-        </div>
+        </div> */}
         <div
           className={`p-4 transition duration-300 ${
             isActive("/charts")
@@ -44,12 +44,12 @@ export default function LowerTopBar() {
         </div>
         <div
           className={`p-4 transition duration-300 ${
-            isActive("/explore")
+            isActive("/")
               ? "border-b-4 border-green-600"
               : "hover:border-b-4 border-green-600 cursor-pointer"
           }`}
         >
-          <Link href="/explore">
+          <Link href="/">
             <span className={`flex items-center text-lg font-medium`}>
               Explore Dataset
             </span>

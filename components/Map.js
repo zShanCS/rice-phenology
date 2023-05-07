@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Tooltip, ImageOverlay, useMap, useMapEvents, Circle, } from "react-leaflet";
-import BaseLayout from '../../components/BaseLayout/BaseLayout';
+import BaseLayout from './BaseLayout/BaseLayout';
 
-import Sidebar from '../../components/zMapboxSidebar';
+import Sidebar from './zMapboxSidebar';
 import { useRouter } from 'next/router'
 import "leaflet/dist/leaflet.css";
 import { latLng } from 'leaflet';
 import L from 'leaflet'
-import { ideal_stages, mosaic_data } from './api/alldata';
+import { ideal_stages, mosaic_data } from '../src/pages/api/alldata';
 
 
 import { WiHail } from 'react-icons/wi/';
@@ -17,10 +17,10 @@ import { BsFire } from 'react-icons/bs';
 import { GiSandsOfTime } from 'react-icons/gi';
 
 import { BiTimeFive } from 'react-icons/bi';
-import Modal from '../../components/zModal';
-import TimeComparisonChart from '../../components/zTimeComparisonChart';
-import { generateTimeTakenData, generateFilterData } from './../../utils/GenerateData';
-import FilterComparisonChart from '../../components/zFilterComparisonChart';
+import Modal from './zModal';
+import TimeComparisonChart from './zTimeComparisonChart';
+import { generateTimeTakenData, generateFilterData } from '../utils/GenerateData';
+import FilterComparisonChart from './zFilterComparisonChart';
 
 const Explore = () => {
 
@@ -70,7 +70,7 @@ const Explore = () => {
             filter: filter,
         };
         router.push({
-            pathname: '/explore',
+            pathname: '/',
             query: query,
         });
 
