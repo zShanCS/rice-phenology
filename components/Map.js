@@ -32,6 +32,7 @@ const Explore = () => {
     const [filter, setFilter] = useState(['NDVI', 'SAVI', 'MSAVI'].includes(router.query['filter']) ? router.query['filter'] : 'NDVI');
 
     const [modalState, setModalState] = useState({ isOpen: false, timeGraph: true });
+    const [isAboutModalOpen, setAboutModalOpen] = useState(true);
     const [opacity, setOpacity] = useState(0.8);
 
     function handleOpacityChange(event) {
@@ -45,7 +46,9 @@ const Explore = () => {
         map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
 
     }
-
+    function setModalOpen(state) {
+        setModalState({ isOpen: state });
+    }
 
     //if some date doesnt exists -> use first date
     useEffect(
@@ -206,6 +209,9 @@ const Explore = () => {
             <div className="non-map-body">
                 <Sidebar variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} />
 
+                <div className="fixed bottom-1 left-1 text-white underline hover:border-2 border-white rounded-lg px-1">
+                    <a onClick={(e) => setAboutModalOpen(true)} href="#">About</a>
+                </div>
                 {
                     mosaic_data[variant][date] &&
                     <>
@@ -308,13 +314,41 @@ const Explore = () => {
                                 />
                             </div>
                         </div>
-                        <Modal isOpen={modalState.isOpen} setIsOpen={setModalState} title={`${modalState.timeGraph ? `Growth Time Analysis of ${variant}` : `Indices Comparison of ${variant} over time`}`}>
+                        <Modal isOpen={modalState.isOpen} setIsOpen={setModalOpen} title={`${modalState.timeGraph ? `Growth Time Analysis of ${variant}` : `Indices Comparison of ${variant} over time`}`}>
                             <div className="flex flex-col justify-center align-middle  items-center gap-3">
                                 {/* <Sidebar showVariantOnly={true} absolutePosition={false} variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} /> */}
                                 <div className="mt-5"></div>
                                 {modalState.timeGraph && <TimeComparisonChart data={generateTimeTakenData(mosaic_data, ideal_stages, variant)} />}
                                 {!modalState.timeGraph && <FilterComparisonChart data={generateFilterData(mosaic_data, variant)} />}
                             </div>
+                        </Modal>
+                        <Modal isOpen={isAboutModalOpen} setIsOpen={setAboutModalOpen} title={''} closeText={'Start Exploring'}>
+                            {/* <h1 className='text-center px-10 text-xl text-black'>Rice Phenology Project</h1> */}
+                            <div class="text-gray py-10 px-4">
+                                <div class="max-w-4xl mx-auto">
+                                    <h1 class="text-4xl font-bold mb-8 text-center">Rice Phenology Estimation: Explore Dataset</h1>
+                                    <div class="container">
+                                        <p class="text-lg leading-8 mb-8">Our software is a web-based solution for rice phenology estimation from drone imagery. The purpose of the software is to help farmers monitor the growth stage of their rice crops, identify areas of the field that may require attention, and optimize their yields. The software will use multispectral images captured by a drone, along with machine learning algorithms, to predict the growth stage of the crops and provide valuable insights to farmers.</p>
+                                        <p class="text-lg leading-8 mb-8">The benefits of this software include improved crop yields and reduced labor costs for farmers. By using the software to monitor the health of their crops, farmers can identify areas of the field that may require attention and take appropriate action to optimize their yields. The software will also provide a simple and intuitive user interface, making it easy for farmers to access and use the tool.</p>
+                                        <h2 class="text-2xl font-bold mb-4">Corporate Goals and Business Strategies</h2>
+                                        <p class="text-lg leading-8 mb-8">In terms of corporate goals and business strategies, this software aligns with the goal of providing innovative solutions that improve the efficiency and productivity of agriculture. By developing a tool that can help farmers monitor their crops and optimize their yields, the software will support the growth of the agriculture industry and contribute to the overall success of the company.</p>
+                                        <h2 class="text-2xl font-bold mb-4">How It Works</h2>
+                                        <p class="text-lg leading-8 mb-8">Our software uses machine learning algorithms to analyze multispectral images captured by a drone and predict the growth stage of rice crops. The software calculates indices such as NDVI and SAVI to estimate crop health and provides farmers with insights that can help them optimize their yields.</p>
+                                        <h2 class="text-2xl font-bold mb-4">Key Features</h2>
+                                        <ul class="list-disc list-inside mb-8">
+                                            <li className='text-lg'>Web-based solution for rice phenology estimation</li>
+                                            <li className='text-lg'>Uses multispectral images captured by a drone</li>
+                                            <li className='text-lg'>Employs machine learning algorithms to predict growth stage of crops</li>
+                                            <li className='text-lg'>Identifies areas of the field that require attention</li>
+                                            <li className='text-lg'>Provides valuable insights to farmers</li>
+                                            <li className='text-lg'>Improves crop yields and reduces labor costs for farmers</li>
+                                            <li className='text-lg'>Simple and intuitive user interface</li>
+                                            <li className='text-lg'>Supports the growth of the agriculture industry</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
                         </Modal>
                     </>
 

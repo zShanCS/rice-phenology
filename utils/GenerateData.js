@@ -37,7 +37,7 @@ function generateFilterData(mosaic_data, field) {
         let savi = mosaic_data[field][date]['SAVI'];
         let msavi = mosaic_data[field][date]['MSAVI'];
         data.push({
-            date: date,
+            date: mosaic_data[field][date]['stage'],
             NDVI: ndvi,
             SAVI: savi,
             MSAVI: msavi
