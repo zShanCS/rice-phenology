@@ -2,7 +2,10 @@ import { useState } from "react";
 import { mosaic_data } from "@/pages/api/alldata";
 import { useRouter } from "next/router";
 
-const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, variants, dates, filters, absolutePosition = true, showVariantOnly = false }) => {
+import { TbDrone } from 'react-icons/tb';
+import { mosaic_images_used } from "@/pages/api/alldata";
+
+const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, variants, dates, filters, absolutePosition = true, showVariantOnly = false, setExploreImagesModalOpen }) => {
 
   const handleVariantChange = (value) => {
     setVariant(value);
@@ -18,7 +21,7 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
 
   return (
     // <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 backdrop-filter backdrop-blur-md z-10">
-    <div className={`${absolutePosition ? 'fixed left-2 top-1/2 -translate-y-1/2' : ''}   w-64 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black`}>
+    <div className={`${absolutePosition ? 'fixed left-2 top-1/2 -translate-y-1/2' : ''}   w-72 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black`}>
 
       {!showVariantOnly &&
         <div className="flex justify-center items-center w-full border-b-2 mb-3 p-3">
@@ -81,7 +84,24 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
             </div>
           ))}
         </div>
+
+        <div className="mt-2 text-white text-sm">
+          <p className="flex align-middle items-center">
+
+          </p>
+        </div>
+
+
+        <div className="flex justify-between text-base items-center text-white mt-1">
+          <p className="flex align-middle items-center">
+            Made with {mosaic_images_used[variant][date]}  <TbDrone className="mx-1" color="white" /> images
+          </p>
+          <div onClick={(e) => { console.log(e); setExploreImagesModalOpen(true); }} className='border-2 border-white rounded-full hover:bg-white hover:text-black cursor-pointer px-2 py-1 '>
+            Explore
+          </div>
+        </div>
       </div>
+
 
       }
     </div>

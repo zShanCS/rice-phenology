@@ -12,8 +12,7 @@ export const fieldData = {
 export const alldata = {
     "2022-06-25": [
         {
-            "Hybrid":
-            {
+            "Hybrid": {
                 "NDVI": [
                     {
                         "date": "07/03",
@@ -223,7 +222,6 @@ export const layersData = {
             "SAVI": 0.7
         }
     ],
-
     "MSAVI": [
         {
             "date": "06/25",
@@ -245,12 +243,24 @@ export const layersData = {
 };
 
 export const stageData = [
-    { name: 'Germination', value: 10 },
-    { name: 'Leaf Development', value: 20 },
-    { name: 'Tillering', value: 30 },
-    { name: 'Max Tillering', value: 30 },
-    { name: 'Flowering', value: 15 },
-    { name: 'Milk', value: 15 },
+    {
+        name: 'Germination', value: 10
+    },
+    {
+        name: 'Leaf Development', value: 20
+    },
+    {
+        name: 'Tillering', value: 30
+    },
+    {
+        name: 'Max Tillering', value: 30
+    },
+    {
+        name: 'Flowering', value: 15
+    },
+    {
+        name: 'Milk', value: 15
+    },
 ]
 
 
@@ -302,7 +312,7 @@ export const Kainat_line_data = [
         "MSAVI": 0.2
     },
 ]
-export const ideal_stages =[
+export const ideal_stages = [
     {
         "name": "Seedling",
         "ideal_days": 20,
@@ -334,6 +344,23 @@ export const ideal_stages =[
 ]
 
 
+export const mosaic_images_used = {
+    "Kainat": {
+        "2022-09-10": 377,
+        "2022-08-27": 376,
+        "2022-06-25": 470,
+        "2022-07-06": 470
+    },
+    "Super Kernel": {
+        "2022-07-06": 403,
+        "2022-07-19": 359,
+        "2022-08-27": 276
+    },
+    "Hybrid": {
+        "2022-07-06": 439,
+        "2022-06-11": 462
+    }
+}
 
 export const mosaic_data = {
 
@@ -342,7 +369,8 @@ export const mosaic_data = {
             "NDVI": 0.2,
             "SAVI": 0.3,
             "MSAVI": 0.4,
-            "temp": 40, "prec": 32, 
+            "temp": 40,
+            "prec": 32,
             "stage": "Seedling",
             "timeTaken": 26,
             "mosaic": {
@@ -364,12 +392,18 @@ export const mosaic_data = {
                 ]
             },
             "healthy": [
-                [32.339779808086696, 72.53493279218675],
+                [
+                    32.339779808086696,
+                    72.53493279218675
+                ],
                 [
                     32.33945121236494,
                     72.53462970256807
                 ],
-                [32.33996790027322, 72.53457605838777]
+                [
+                    32.33996790027322,
+                    72.53457605838777
+                ]
             ],
             'unhealthy': [
                 [
@@ -386,8 +420,9 @@ export const mosaic_data = {
             "NDVI": 0.3,
             "SAVI": 0.4,
             "MSAVI": 0.5,
-            "temp": 35, "prec": 40, "stage": "Tillering",
-
+            "temp": 35,
+            "prec": 40,
+            "stage": "Tillering",
             "timeTaken": 34,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220706.png",
@@ -405,7 +440,6 @@ export const mosaic_data = {
                     //     32.341158498800944,
                     //     72.53919684062315
                     // ]
-
                     [
                         32.33925700144764,
                         72.5339985983349
@@ -414,7 +448,6 @@ export const mosaic_data = {
                         32.340393338283484,
                         72.53513116378589
                     ]
-
                 ]
             },
             'healthy': [
@@ -428,16 +461,23 @@ export const mosaic_data = {
                 ]
             ],
             'unhealthy': [
-                [32.33929711189132, 72.5346350669861],
-                [32.339476140358066, 72.53422737121583]
+                [
+                    32.33929711189132,
+                    72.5346350669861
+                ],
+                [
+                    32.339476140358066,
+                    72.53422737121583
+                ]
             ]
         },
         "2022-08-27": {
             "NDVI": 0.5,
             "SAVI": 0.6,
             "MSAVI": 0.7,
-            "temp": 43, "prec": 39, "stage": "Flowering",
-
+            "temp": 43,
+            "prec": 39,
+            "stage": "Flowering",
             "timeTaken": 26,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220827.png",
@@ -468,16 +508,23 @@ export const mosaic_data = {
                 ]
             ],
             'unhealthy': [
-                [32.3391928673045, 72.53480941057207],
-                [32.33920193205594, 72.53459215164186]
+                [
+                    32.3391928673045,
+                    72.53480941057207
+                ],
+                [
+                    32.33920193205594,
+                    72.53459215164186
+                ]
             ]
         },
         "2022-09-10": {
             "NDVI": 0.6,
             "SAVI": 0.7,
             "MSAVI": 0.8,
-            "temp": 27, "prec": 29, "stage": "Ripening",
-
+            "temp": 27,
+            "prec": 29,
+            "stage": "Ripening",
             "timeTaken": 35,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220910.png",
@@ -512,19 +559,141 @@ export const mosaic_data = {
                 ]
             ],
             'unhealthy': [
-                [32.339739016958525, 72.5349408388138],
-                [32.33917247161042, 72.5348684191704]
+                [
+                    32.339739016958525,
+                    72.5349408388138
+                ],
+                [
+                    32.33917247161042,
+                    72.5348684191704
+                ]
             ]
         }
     },
-
+    'Hybrid': {
+        "2022-06-11": {
+            "NDVI": 0.3,
+            "SAVI": 0.4,
+            "MSAVI": 0.3,
+            "temp": 35,
+            "prec": 32,
+            "stage": "Seedling",
+            "timeTaken": 35,
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220611H.png",
+                "ndvi_legend": "mosaics/ndvi/220611Hlegend.png",
+                "savi_src": "mosaics/savi/220611H.png",
+                "savi_legend": "mosaics/savi/220611Hlegend.png",
+                "msavi_src": "mosaics/msavi/220611H.png",
+                "msavi_legend": "mosaics/msavi/220611Hlegend.png",
+                "overlayBounds": [
+                    [
+                        32.3402579693849,
+                        72.53620684146883
+                    ],
+                    [
+                        32.33924725579957,
+                        72.53470480442049
+                    ]
+                ]
+            },
+            'healthy': [
+                [
+                    32.340158258232634,
+                    72.53566503524782
+                ],
+                [
+                    32.340158258232634,
+                    72.5350320339203
+                ],
+            ],
+            'unhealthy': [
+                [
+                    32.340108402615314,
+                    72.53594398498537
+                ],
+                [
+                    32.33990444753112,
+                    72.53565967082979
+                ],
+                [
+                    32.33991804455103,
+                    72.5352305173874
+                ],
+                [
+                    32.33970049198724,
+                    72.5356435775757
+                ],
+                [
+                    32.33955545665416,
+                    72.53535926342012
+                ]
+            ]
+        },
+        "2022-07-06": {
+            "NDVI": 0.6,
+            "SAVI": 0.7,
+            "MSAVI": 0.8,
+            "temp": 35,
+            "prec": 40,
+            "stage": "Tillering",
+            "timeTaken": 35,
+            "mosaic": {
+                "ndvi_src": "mosaics/ndvi/220706H.png",
+                "ndvi_legend": "mosaics/ndvi/220706Hlegend.png",
+                "savi_src": "mosaics/savi/220706H.png",
+                "savi_legend": "mosaics/savi/220706Hlegend.png",
+                "msavi_src": "mosaics/msavi/220706H.png",
+                "msavi_legend": "mosaics/msavi/220706Hlegend.png",
+                "overlayBounds": [
+                    [
+                        32.34025343706219,
+                        72.53622829914094
+                    ],
+                    [
+                        32.33925178817266,
+                        72.53515541553499
+                    ]
+                ]
+            },
+            'healthy': [
+                [
+                    32.340044949971706,
+                    72.53616929054262
+                ],
+                [
+                    32.339618909641,
+                    72.53609955310823
+                ],
+                [
+                    32.3398092683345,
+                    72.53538072109224
+                ]
+            ],
+            'unhealthy': [
+                [
+                    32.33940588872345,
+                    72.53525733947755
+                ],
+                [
+                    32.340217178472265,
+                    72.53600835800172
+                ],
+                [
+                    32.34013106426296,
+                    72.53528952598573
+                ]
+            ]
+        }
+    },
     'Super Kernel': {
         "2022-07-06": {
-            "temp": 35, "prec": 40, "stage": "Seedling",
+            "temp": 35,
+            "prec": 40,
+            "stage": "Seedling",
             "NDVI": 0.4,
             "SAVI": 0.2,
             "MSAVI": 0.1,
-
             "timeTaken": 15,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220706SK.png",
@@ -536,7 +705,6 @@ export const mosaic_data = {
                 "overlayBounds": [
                     // [32.339026750942125, 72.53446255340462],
                     // [32.34037087740836, 72.53530713261662]
-
                     [
                         32.34011431725231,
                         72.53830831303031
@@ -545,24 +713,32 @@ export const mosaic_data = {
                         32.341136743428166,
                         72.53913427897837
                     ]
-
                 ]
             },
             'healthy': [
-                [32.34082904023126, 72.53850013017656],
-                [32.340214912309904, 72.53845721483232]
+                [
+                    32.34082904023126,
+                    72.53850013017656
+                ],
+                [
+                    32.340214912309904,
+                    72.53845721483232
+                ]
             ],
             'unhealthy': [
-                [32.340931016788865, 72.53868520259859]
+                [
+                    32.340931016788865,
+                    72.53868520259859
+                ]
             ],
-
         },
         "2022-07-19": {
-            "temp": 40, "prec": 32, "stage": "Tillering",
+            "temp": 40,
+            "prec": 32,
+            "stage": "Tillering",
             "NDVI": 0.75,
             "SAVI": 0.6,
             "MSAVI": 0.4,
-
             "timeTaken": 45,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220719SK.png",
@@ -583,20 +759,33 @@ export const mosaic_data = {
                 ]
             },
             'healthy': [
-                [32.34060469139999, 72.53883808851243],
-                [32.34107151763556, 72.53893196582796],
-                [32.34024890473922, 72.53887832164766]
+                [
+                    32.34060469139999,
+                    72.53883808851243
+                ],
+                [
+                    32.34107151763556,
+                    72.53893196582796
+                ],
+                [
+                    32.34024890473922,
+                    72.53887832164766
+                ]
             ],
             'unhealthy': [
-                [32.34083583867201, 72.53836601972581]
+                [
+                    32.34083583867201,
+                    72.53836601972581
+                ]
             ],
         },
         "2022-08-27": {
-            "temp": 43, "prec": 39, "stage": "Flowering",
+            "temp": 43,
+            "prec": 39,
+            "stage": "Flowering",
             "NDVI": 0.6,
             "SAVI": 0.5,
             "MSAVI": 0.5,
-
             "timeTaken": 30,
             "mosaic": {
                 "ndvi_src": "mosaics/ndvi/220827SK.png",
@@ -617,14 +806,25 @@ export const mosaic_data = {
                 ]
             },
             'healthy': [
-                [32.3409604766619, 72.53884345293046],
-                [32.34036901122062, 72.5386691093445]
+                [
+                    32.3409604766619,
+                    72.53884345293046
+                ],
+                [
+                    32.34036901122062,
+                    72.5386691093445
+                ]
             ],
             'unhealthy': [
-                [32.34101486409458, 72.53911435604097],
-                [32.340273832512615, 72.53901779651643]
+                [
+                    32.34101486409458,
+                    72.53911435604097
+                ],
+                [
+                    32.340273832512615,
+                    72.53901779651643
+                ]
             ],
         }
     }
-
 }

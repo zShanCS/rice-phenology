@@ -21,6 +21,8 @@ import Modal from './zModal';
 import TimeComparisonChart from './zTimeComparisonChart';
 import { generateTimeTakenData, generateFilterData } from '../utils/GenerateData';
 import FilterComparisonChart from './zFilterComparisonChart';
+import ImageGrid from './ImageGrid';
+import { images_links } from '@/pages/api/images_links';
 
 const Explore = () => {
 
@@ -33,6 +35,7 @@ const Explore = () => {
 
     const [modalState, setModalState] = useState({ isOpen: false, timeGraph: true });
     const [isAboutModalOpen, setAboutModalOpen] = useState(true);
+    const [isExploreImagesModalOpen, setExploreImagesModalOpen] = useState(false);
     const [opacity, setOpacity] = useState(0.8);
 
     function handleOpacityChange(event) {
@@ -207,7 +210,7 @@ const Explore = () => {
             </MapContainer>
 
             <div className="non-map-body">
-                <Sidebar variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} />
+                <Sidebar imagesLen={400} variant={variant} setVariant={setVariant} date={date} setDate={setDate} filter={filter} setFilter={setFilter} variants={Object.getOwnPropertyNames(mosaic_data)} dates={Object.getOwnPropertyNames(mosaic_data[variant])} filters={['NDVI', 'SAVI', 'MSAVI']} setExploreImagesModalOpen={setExploreImagesModalOpen} />
 
                 <div className="fixed bottom-1 left-1 text-white underline hover:border-2 border-white rounded-lg px-1">
                     <a onClick={(e) => setAboutModalOpen(true)} href="#">About</a>
@@ -298,7 +301,7 @@ const Explore = () => {
 
                         <div className="fixed bottom-2 right-2 flex flex-col content-end items-end">
                             <div className="rounded-xl  mb-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md px-1 py-1 z-20 text-black">
-                                <img src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt="" />
+                                <img className='h-[150px]' src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt="" />
                             </div>
 
                             <div className="w-44 flex items-center justify-center rounded-lg  bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-5 py-1 z-20 text-black">
@@ -348,6 +351,20 @@ const Explore = () => {
                                     </div>
                                 </div>
                             </div>
+
+                        </Modal>
+                        <Modal isOpen={isExploreImagesModalOpen} setIsOpen={setExploreImagesModalOpen} title={
+                            <>
+
+                                <h1 className='text-center text-3xl'>{variant} Rice</h1>
+                                <div className='flex flex-wrap justify-between items-center'>
+                                    <p className='text-lg'>Date : {date}</p>
+                                    <p className='text-sm'>Captured with DJI Phantom 4 UAV. Sentera Precision NDVI Single Sensor</p>
+                                </div>
+
+                            </>
+                        }>
+                            <ImageGrid date={date} variant={variant} images={images_links[variant.replace(' ', '_').toLowerCase()][date]['files']} />
 
                         </Modal>
                     </>
