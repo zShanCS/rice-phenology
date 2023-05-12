@@ -1,246 +1,4 @@
-export const fieldData = {
-    "Hybird": [
-        {
-            'Date': '2022-06-25',
-            'Temperature': '37',
-            'IndexData': {
-                'NDVI': '0.2'
-            }
-        }
-    ]
-}
-export const alldata = {
-    "2022-06-25": [
-        {
-            "Hybrid": {
-                "NDVI": [
-                    {
-                        "date": "07/03",
-                        "NDVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "NDVI": 0.3
-                    },
-                    {
-                        "date": "09/03",
-                        "NDVI": 0.6
-                    },
-                    {
-                        "date": "10/03",
-                        "NDVI": 0.8
-                    }
-                ],
-                "SAVI": [
-                    {
-                        "date": "07/03",
-                        "SAVI": 0.3
-                    },
-                    {
-                        "date": "08/03",
-                        "SAVI": 0.4
-                    },
-                    {
-                        "date": "09/03",
-                        "SAVI": 0.5
-                    },
-                    {
-                        "date": "10/03",
-                        "SAVI": 0.7
-                    }
-                ],
-                "MSAVI": [
-                    {
-                        "date": "07/03",
-                        "MSAVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "MSAVI": 0.2
-                    },
-                    {
-                        "date": "09/03",
-                        "MSAVI": 0.3
-                    },
-                    {
-                        "date": "10/03",
-                        "MSAVI": 0.3
-                    }
-                ]
-            },
-            "Kainat": {
-                "NDVI": [
-                    {
-                        "date": "07/03",
-                        "NDVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "NDVI": 0.3
-                    },
-                    {
-                        "date": "09/03",
-                        "NDVI": 0.6
-                    },
-                    {
-                        "date": "10/03",
-                        "NDVI": 0.8
-                    }
-                ],
-                "SAVI": [
-                    {
-                        "date": "07/03",
-                        "SAVI": 0.3
-                    },
-                    {
-                        "date": "08/03",
-                        "SAVI": 0.4
-                    },
-                    {
-                        "date": "09/03",
-                        "SAVI": 0.5
-                    },
-                    {
-                        "date": "10/03",
-                        "SAVI": 0.7
-                    }
-                ],
-                "MSAVI": [
-                    {
-                        "date": "07/03",
-                        "MSAVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "MSAVI": 0.2
-                    },
-                    {
-                        "date": "09/03",
-                        "MSAVI": 0.3
-                    },
-                    {
-                        "date": "10/03",
-                        "MSAVI": 0.3
-                    }
-                ]
-            },
-            "SK": {
-                "NDVI": [
-                    {
-                        "date": "07/03",
-                        "NDVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "NDVI": 0.3
-                    },
-                    {
-                        "date": "09/03",
-                        "NDVI": 0.6
-                    },
-                    {
-                        "date": "10/03",
-                        "NDVI": 0.8
-                    }
-                ],
-                "SAVI": [
-                    {
-                        "date": "07/03",
-                        "SAVI": 0.3
-                    },
-                    {
-                        "date": "08/03",
-                        "SAVI": 0.4
-                    },
-                    {
-                        "date": "09/03",
-                        "SAVI": 0.5
-                    },
-                    {
-                        "date": "10/03",
-                        "SAVI": 0.7
-                    }
-                ],
-                "MSAVI": [
-                    {
-                        "date": "07/03",
-                        "MSAVI": 0.1
-                    },
-                    {
-                        "date": "08/03",
-                        "MSAVI": 0.2
-                    },
-                    {
-                        "date": "09/03",
-                        "MSAVI": 0.3
-                    },
-                    {
-                        "date": "10/03",
-                        "MSAVI": 0.3
-                    }
-                ]
-            }
-        }
-    ]
-}
 
-export const layersData = {
-    'NDVI': [
-        {
-            "date": "06/25",
-            "NDVI": 0.2
-        },
-        {
-            "date": "07/06",
-            "NDVI": 0.3
-        },
-        {
-            "date": "08/27",
-            "NDVI": 0.6
-        },
-        {
-            "date": "09/10",
-            "NDVI": 0.8
-        }
-    ],
-
-    'SAVI': [
-        {
-            "date": "06/25",
-            "SAVI": 0.3
-        },
-        {
-            "date": "07/06",
-            "SAVI": 0.4
-        },
-        {
-            "date": "08/27",
-            "SAVI": 0.5
-        },
-        {
-            "date": "09/10",
-            "SAVI": 0.7
-        }
-    ],
-    "MSAVI": [
-        {
-            "date": "06/25",
-            "MSAVI": 0.1
-        },
-        {
-            "date": "07/06",
-            "MSAVI": 0.2
-        },
-        {
-            "date": "08/27",
-            "MSAVI": 0.3
-        },
-        {
-            "date": "09/10",
-            "MSAVI": 0.3
-        }
-    ]
-};
 
 export const stageData = [
     {
@@ -264,54 +22,7 @@ export const stageData = [
 ]
 
 
-export const SK_line_data =
-    [
-        {
-            "date": "07/06",
-            "NDVI": 0.2,
-            "SAVI": 0.1,
-            "MSAVI": 0.05
-        },
-        {
-            "date": "07/19",
-            "NDVI": 0.4,
-            "SAVI": 0.2,
-            "MSAVI": 0.15
-        },
-        {
-            "date": "08/27",
-            "NDVI": 0.8,
-            "SAVI": 0.1,
-            "MSAVI": 0.5
-        },
-    ]
 
-export const Kainat_line_data = [
-    {
-        "date": "06/25",
-        "NDVI": 0.2,
-        "SAVI": 0.1,
-        "MSAVI": 0.1
-    },
-    {
-        "date": "07/06",
-        "NDVI": 0.5,
-        "SAVI": 0.3,
-        "MSAVI": 0.4
-    },
-    {
-        "date": "08/27",
-        "NDVI": 0.9,
-        "SAVI": 0.6,
-        "MSAVI": 0.6
-    },
-    {
-        "date": "09/10",
-        "NDVI": 0.6,
-        "SAVI": 0.4,
-        "MSAVI": 0.2
-    },
-]
 export const ideal_stages = [
     {
         "name": "Seedling",
@@ -358,15 +69,18 @@ export const mosaic_images_used = {
     },
     "Hybrid": {
         "2022-07-06": 439,
-        "2022-06-11": 462
+        "2022-06-11": 462,
+        "2022-08-27": 377
     }
 }
+
+export const all_stages = ['Germination','Seedling', 'Germination', 'Tillering', 'Max Tillering', 'Flowering', 'Milk', 'Ripening','Milk'];
 
 export const mosaic_data = {
 
     'Kainat': {
         "2022-06-25": {
-            "NDVI": 0.2,
+            "NDVI": 0.1,
             "SAVI": 0.3,
             "MSAVI": 0.4,
             "temp": 40,
@@ -472,7 +186,7 @@ export const mosaic_data = {
             ]
         },
         "2022-08-27": {
-            "NDVI": 0.5,
+            "NDVI": 0.6,
             "SAVI": 0.6,
             "MSAVI": 0.7,
             "temp": 43,
@@ -519,7 +233,7 @@ export const mosaic_data = {
             ]
         },
         "2022-09-10": {
-            "NDVI": 0.6,
+            "NDVI": 0.8,
             "SAVI": 0.7,
             "MSAVI": 0.8,
             "temp": 27,
@@ -572,7 +286,7 @@ export const mosaic_data = {
     },
     'Hybrid': {
         "2022-06-11": {
-            "NDVI": 0.3,
+            "NDVI": 0.1,
             "SAVI": 0.4,
             "MSAVI": 0.3,
             "temp": 35,
@@ -631,9 +345,9 @@ export const mosaic_data = {
             ]
         },
         "2022-07-06": {
-            "NDVI": 0.6,
-            "SAVI": 0.7,
-            "MSAVI": 0.8,
+            "NDVI": 0.5,
+            "SAVI": 0.4,
+            "MSAVI": 0.5,
             "temp": 35,
             "prec": 40,
             "stage": "Tillering",
@@ -684,14 +398,64 @@ export const mosaic_data = {
                     72.53528952598573
                 ]
             ]
-        }
+        },
+
+        "2022-08-27": {
+            "NDVI": 0.7,
+            "SAVI": 0.5,
+            "MSAVI": 0.6,
+            "temp": 35,
+            "prec": 40,
+            "stage": "Flowering",
+            "timeTaken": 34,
+            "mosaic": {
+                //false hybrid
+                "ndvi_src": "mosaics/ndvi/220706.png",
+                "ndvi_legend": "mosaics/ndvi/220706legend.png",
+                "savi_src": "mosaics/savi/220706.png",
+                "savi_legend": "mosaics/savi/220706legend.png",
+                "msavi_src": "mosaics/msavi/220706.png",
+                "msavi_legend": "mosaics/msavi/220706legend.png",
+                "overlayBounds": [
+                    // [
+                    //     32.34011086322847,
+                    //     72.53823414753222
+                    // ],
+                    // [
+                    //     32.341158498800944,
+                    //     72.53919684062315
+                    // ][
+                    [
+                        32.34025343706219,
+                        72.53622829914094
+                    ],
+                    [
+                        32.33925178817266,
+                        72.53515541553499
+                    ]
+                ]
+            },
+            'healthy': [
+                [32.33983215639413, 72.53571991831618
+                ],
+                [32.33979590322397, 72.53587017879492
+                ]
+            ],
+            'unhealthy': [
+                [32.339424307392555, 72.53538183223897
+                ], [
+                    32.33927929327266, 72.53578455695339
+                ]
+            ]
+        },
     },
+
     'Super Kernel': {
         "2022-07-06": {
             "temp": 35,
             "prec": 40,
             "stage": "Seedling",
-            "NDVI": 0.4,
+            "NDVI": 0.1,
             "SAVI": 0.2,
             "MSAVI": 0.1,
             "timeTaken": 15,
@@ -736,7 +500,7 @@ export const mosaic_data = {
             "temp": 40,
             "prec": 32,
             "stage": "Tillering",
-            "NDVI": 0.75,
+            "NDVI": 0.3,
             "SAVI": 0.6,
             "MSAVI": 0.4,
             "timeTaken": 45,
@@ -783,7 +547,7 @@ export const mosaic_data = {
             "temp": 43,
             "prec": 39,
             "stage": "Flowering",
-            "NDVI": 0.6,
+            "NDVI": 0.7,
             "SAVI": 0.5,
             "MSAVI": 0.5,
             "timeTaken": 30,

@@ -24,6 +24,15 @@ import FilterComparisonChart from './zFilterComparisonChart';
 import ImageGrid from './ImageGrid';
 import { images_links } from '@/pages/api/images_links';
 
+
+
+function MapFly({ overlayBounds }) {
+    const map = useMap();
+    map.flyTo(latLng(overlayBounds[1][0], overlayBounds[1][1]), 18);
+
+}
+
+
 const Explore = () => {
 
     const router = useRouter();
@@ -44,11 +53,6 @@ const Explore = () => {
     console.log(mosaic_data);
     console.log(JSON.stringify({ variant, date, filter }))
 
-    function MapFly({ overlayBounds }) {
-        const map = useMap();
-        map.flyTo(latLng(overlayBounds[0][0], overlayBounds[0][1]), 18);
-
-    }
     function setModalOpen(state) {
         setModalState({ isOpen: state });
     }
@@ -84,12 +88,11 @@ const Explore = () => {
 
     const [mylatLng, setLatLng] = useState([32.33994977092287, 72.53458678722383]);
 
-    function Location() {
-
-        const map = useMapEvents({
-            click: (e) => { navigator.clipboard.writeText([...Object.values(e.latlng)]); console.log(Object.values(e.latlng)); setLatLng([e.latlng.lat, e.latlng.lng]) }
-        })
-    }
+    // function Location() {
+    //     const map = useMapEvents({
+    //         click: (e) => { navigator.clipboard.writeText([...Object.values(e.latlng)]); console.log(Object.values(e.latlng)); setLatLng([e.latlng.lat, e.latlng.lng]) }
+    //     })
+    // }
 
     function timeDiff() {
         if (mosaic_data && mosaic_data[variant] && mosaic_data[variant][date]) {
@@ -206,7 +209,7 @@ const Explore = () => {
                     <Tooltip>This Region is unknown</Tooltip>
                 </Marker> */}
 
-                <Location />
+                {/* <Location /> */}
             </MapContainer>
 
             <div className="non-map-body">
@@ -270,9 +273,9 @@ const Explore = () => {
                                         <p className='text-xs flex flex-row items-center mr-1'> <GiSandsOfTime /> Ideal Time: {ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.ideal_days} days</p>
                                     </div>
 
-                                    <div>
+                                    <div className='text-sm'>
                                         <h2> Analysis</h2>
-                                        <p className='w-full text-left'>
+                                        <p className='w-full text-left '>
                                             {timeDiff().includes('equal') ?
                                                 ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_equal
                                                 :
@@ -293,9 +296,13 @@ const Explore = () => {
                             <div onClick={(e) => { let dates = Object.getOwnPropertyNames(mosaic_data[variant]); let curr = dates.indexOf(date); let next = dates[curr - 1]; if (next) { setDate(next) } }} className={` ${Object.getOwnPropertyNames(mosaic_data[variant]).indexOf(date) == 0 ? 'cursor-not-allowed text-gray-300 text-opacity-20' : 'cursor-pointer text-white'} select-none  absolute top-1/2 -left-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md `}>
                                 ◀
                             </div>
+                            <div onClick={() => { setOpacity(opacity + 0.01); }} className='absolute top-1/2 -right-32 -translate-x-1/2 cursor-pointer -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md'>
+                                📌
+                            </div>
                             <div onClick={(e) => { let dates = Object.getOwnPropertyNames(mosaic_data[variant]); let curr = dates.indexOf(date); let next = dates[curr + 1]; if (next) { setDate(next) } }} className={`  ${Object.getOwnPropertyNames(mosaic_data[variant]).indexOf(date) == Object.getOwnPropertyNames(mosaic_data[variant]).length - 1 ? 'cursor-not-allowed text-gray-300 text-opacity-20' : 'cursor-pointer text-white'} select-none absolute top-1/2 -right-16 -translate-x-1/2 rotate-180 -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md `}>
                                 ◀
                             </div>
+
                         </div>
 
 
@@ -361,6 +368,9 @@ const Explore = () => {
                                     <p className='text-lg'>Date : {date}</p>
                                     <p className='text-sm'>Captured with DJI Phantom 4 UAV. Sentera Precision NDVI Single Sensor</p>
                                 </div>
+                                <p className="text-right text-xs">
+                                    Altitude: 230m
+                                </p>
 
                             </>
                         }>
