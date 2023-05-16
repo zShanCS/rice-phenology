@@ -201,7 +201,7 @@ const Explore = () => {
 
                                     })}>
                                     <Popup>
-                                        <p>The NDVI value {(mosaic_data[variant][date]['NDVI'] + 0.1).toPrecision(3)} is greater than the overall average which is {mosaic_data[variant][date]['NDVI']}</p>
+                                        <p>The NDVI value {(mosaic_data[variant][date]['NDVI'] + 0.1).toPrecision(2)} is greater than the overall average which is {mosaic_data[variant][date]['NDVI']}</p>
                                     </Popup>
                                     <Tooltip>This Region seems healthier than the average. <br></br> <span>Click the leaf see more information</span></Tooltip>
                                 </Marker>
@@ -227,7 +227,7 @@ const Explore = () => {
                                     })}>
 
                                     <Popup>
-                                        <p>The NDVI value is close to {(mosaic_data[variant][date]['NDVI'] - 0.2).toPrecision(3)} which is much lesser than the overall average which is {mosaic_data[variant][date]['NDVI']}</p>
+                                        <p>The NDVI value is close to {(mosaic_data[variant][date]['NDVI'] - 0.2).toPrecision(2)} which is much lesser than the overall average which is {mosaic_data[variant][date]['NDVI']}</p>
                                     </Popup>
                                     <Tooltip>This Region seems to be suffering from stunted growth. <br></br> <span>Click the leaf see more information</span></Tooltip>
                                 </Marker>
@@ -254,6 +254,8 @@ const Explore = () => {
                                     })}>
 
                                     <Popup>
+                                        <h2 className='text-center'>Growth Stage: {mosaic_data[variant][date]['stage']}</h2>
+                                        {/* <p className='my-1 text-left text-xs'>NDVI: {parseFloat(mosaic_data[variant][date]['NDVI'])}</p> */}
                                         <img src={imgMarker.url} className='rounded-xl w-[30vw]' />
                                         {/* <h2>{imgMarker['File Name']}</h2> */}
                                         <p className='text-xs flex justify-center gap-2 my-4'>
@@ -268,7 +270,7 @@ const Explore = () => {
 
 
                                         </p>
-                                        <p className='text-xs flex justify-evenly'>
+                                        <p className='text-xs flex justify-evenly gap-2'>
                                             <span className='flex items-center gap-1'>
                                                 <FaMountain /> Alt: {imgMarker.Alt}m
                                             </span>
