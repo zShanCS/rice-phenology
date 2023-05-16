@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
 import Modal from './zModal';
 import { all_stages, mosaic_data } from '@/pages/api/alldata';
-
-
+import { image_details } from '@/pages/api/image_details';
+import { FaMountain } from 'react-icons/fa';
+import { TbPlaneTilt, TbWorldLatitude, TbWorldLongitude, } from 'react-icons/tb';
+import { GiLobArrow } from 'react-icons/gi';
 const ImageGrid = ({ images, variant, date }) => {
     const [imageModalState, setImageModalState] = useState({ isOpen: false, imgLink: null });
 
     function handleImagaModelOpenState(state) {
         setImageModalState({ isOpen: state });
     }
+    function getKey() {
+        return Object.keys(image_details).filter(k => k.toLowerCase().includes(variant.replace(' ', '_').toLowerCase()) && k.includes(date))[0];
+    }
+    // console.log(getKey(), imageModalState?.imgLink?.split('/').pop());
+    const imageDetails = image_details[getKey()].filter(i => i['File Name'].toLowerCase() == imageModalState?.imgLink?.split('/').pop().toLowerCase())[0];
+    console.log(imageDetails);
     return (
         <div >
             <div className="h-[65vh] w-[70vw] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
@@ -19,17 +27,43 @@ const ImageGrid = ({ images, variant, date }) => {
             {
                 imageModalState.imgLink &&
                 <Modal isOpen={imageModalState.isOpen} setIsOpen={handleImagaModelOpenState} title={
-                    <diiv>
+                    imageDetails ? <div>
+                        <h2>{imageDetails['File Name']}</h2>
+                        <p className='text-xs flex justify-center gap-2 my-4'>
+                            <span className='flex items-center gap-1'>
+                                <TbWorldLatitude />
+                                Lat: {imageDetails.Lat}°
+                            </span>
+                            <span className='flex items-center gap-1'>
+                                <TbWorldLongitude />
+                                Lon: {imageDetails.Lon}°
+                            </span>
 
-                        <h2>{imageModalState.imgLink.split('/').pop()}</h2>
-                        <p>{mosaic_data[variant][date]['mosaic']['overlayBounds'][0].map(x=>x.toPrecision(6)).join('°, ')}°</p>
-                    </diiv>
+
+                        </p>
+                        <p className='text-xs flex justify-evenly'>
+                            <span className='flex items-center gap-1'>
+                                <FaMountain /> Alt: {imageDetails.Alt}m
+                            </span>
+                            <span className='flex items-center gap-1'>
+                                <GiLobArrow />
+                                Roll: {imageDetails.Roll}°
+                            </span>
+                            <span className='flex items-center gap-1'>
+                                <TbPlaneTilt />
+                                Pitch: {imageDetails.Pitch}°
+                            </span>
+
+
+                        </p>
+                    </div>
+                        : 'Image Details'
                 }>
                     <div className='flex flex-row flex-1 gap-6 justify-center items-center'>
                         <div className='text-lg'>
                             <p>Predicted Stage</p>
                             <p>{mosaic_data[variant][date]['stage']}</p>
-                            <p>Confidence: {(80 + Math.random()*15).toPrecision(4)}</p>
+                            <p>Confidence: {(80 + Math.random() * 15).toPrecision(4)}</p>
                         </div>
                         <img src={imageModalState.imgLink} className='rounded-xl w-[30vw]' />
                     </div>
