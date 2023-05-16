@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { mosaic_data } from "@/pages/api/alldata";
-import { useRouter } from "next/router";
 
 import { TbDrone } from 'react-icons/tb';
 import { mosaic_images_used } from "@/pages/api/alldata";

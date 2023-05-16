@@ -11,25 +11,29 @@ import { ideal_stages, mosaic_data } from '../src/pages/api/alldata';
 
 
 import { WiHail } from 'react-icons/wi/';
+import { BsArrowsFullscreen, BsFullscreenExit } from 'react-icons/bs/';
 
 import { BsFire } from 'react-icons/bs';
 
 import { GiSandsOfTime } from 'react-icons/gi';
 
-import { BiTimeFive } from 'react-icons/bi';
+import { TbDrone } from 'react-icons/tb';
+import { BiMapPin, BiTimeFive } from 'react-icons/bi';
 import Modal from './zModal';
 import TimeComparisonChart from './zTimeComparisonChart';
 import { generateTimeTakenData, generateFilterData } from '../utils/GenerateData';
 import FilterComparisonChart from './zFilterComparisonChart';
 import ImageGrid from './ImageGrid';
 import { images_links } from '@/pages/api/images_links';
+import { FaMountain } from 'react-icons/fa';
+import { TbPlaneTilt, TbWorldLatitude, TbWorldLongitude, } from 'react-icons/tb';
+import { GiLobArrow } from 'react-icons/gi';
+import { image_details } from '@/pages/api/image_details';
 
 
-
-function MapFly({ overlayBounds }) {
+function MapFly({ overlayBounds, overZoom = false }) {
     const map = useMap();
-    map.flyTo(latLng(overlayBounds[1][0], overlayBounds[1][1]), 18);
-
+    map.flyTo(L.latLngBounds(overlayBounds).getCenter(), overZoom ? 19 : 18);
 }
 
 
@@ -46,7 +50,20 @@ const Explore = () => {
     const [isAboutModalOpen, setAboutModalOpen] = useState(true);
     const [isExploreImagesModalOpen, setExploreImagesModalOpen] = useState(false);
     const [opacity, setOpacity] = useState(0.8);
+    const [overZoom, setOverZoom] = useState(false);
 
+    const [imageMarkers, setImageMarkers] = useState([]);
+
+    function addImageMarker(newMarker) {
+        console.log(imageMarkers);
+        if (imageMarkers.filter(m => m.url == newMarker.url).length > 0) {
+            console.log('Marker Already Present');
+            isExploreImagesModalOpen ? setExploreImagesModalOpen(false) : {};
+            return;
+        }
+        setImageMarkers([...imageMarkers, newMarker]);
+        setExploreImagesModalOpen(false);
+    }
     function handleOpacityChange(event) {
         setOpacity(event.target.value);
     }
@@ -55,6 +72,9 @@ const Explore = () => {
 
     function setModalOpen(state) {
         setModalState({ isOpen: state });
+    }
+    function getKey() {
+        return Object.keys(image_details).filter(k => k.toLowerCase().includes(variant.replace(' ', '_').toLowerCase()) && k.includes(date))[0];
     }
 
     //if some date doesnt exists -> use first date
@@ -67,10 +87,14 @@ const Explore = () => {
     );
 
     useEffect(() => {
+        setImageMarkers([]);
+        setOverZoom(false);
         onVariablesChange({ variant, date, filter })
     }, [variant, date, filter]);
 
-
+    useEffect(() => {
+        setOverZoom(false);
+    }, [opacity]);
     function onVariablesChange({ variant, date, filter }) {
 
         // update the query params
@@ -86,11 +110,27 @@ const Explore = () => {
 
     }
 
-    const [mylatLng, setLatLng] = useState([32.33994977092287, 72.53458678722383]);
-
-    // function Location() {
+    // function MapInteraction() {
     //     const map = useMapEvents({
-    //         click: (e) => { navigator.clipboard.writeText([...Object.values(e.latlng)]); console.log(Object.values(e.latlng)); setLatLng([e.latlng.lat, e.latlng.lng]) }
+    //         click: (e) => {
+    //             // navigator.clipboard.writeText([...Object.values(e.latlng)]);
+    //             console.log(Object.values(e.latlng));
+    //             let isInside = L.latLngBounds(mosaic_data[variant][date]['mosaic']['overlayBounds']).overlaps(e.latlng.toBounds(0.0000000000001));
+    //             // console.log('isInide', isInside);
+    //             if (isInside) {
+    //                 let distances = image_details[getKey()].map(k => { return { ...k, dist: e.latlng.distanceTo(L.latLng(k.Lat, k.Lon)) } });
+    //                 // console.log({distances});
+    //                 let sorted_distances = distances.sort((a, b) => a.dist - b.dist);
+    //                 // console.log({sorted_distances});
+    //                 console.log('closest image', sorted_distances[0]);
+    //                 let closest = sorted_distances[0];
+    //                 addImageMarker({ ...sorted_distances[0], url: `${variant.toLowerCase().replace(' ', '_')}/${date}/${closest['File Name']}` });
+    //             }
+    //             else{
+    //                 setImageMarkers([]);
+    //             }
+
+    //         }
     //     })
     // }
 
@@ -118,11 +158,20 @@ const Explore = () => {
                 center={[32.33925700144764, 72.5339985983349]}
                 zoom={16}
                 zoomControl={false}
+                markerZoomAnimation={true}
+                maxZoom={18}
                 scrollWheelZoom={true}
             >
                 <TileLayer
-
                     url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                // url='http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'
+                // url = 'https://{s}.google.com/vt/lyrs=m@221097413,traffic&x={x}&y={y}&z={z}'
+                // url='http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
+                // subdomains={["mt0", "mt1", "mt2", "mt3"]}
+                // maxZoom={18}
+                // tileSize={256}
+                // maxZoom={20}
+                // maxNativeZoom={20}
                 />
                 {mosaic_data[variant][date] && (
                     <>
@@ -131,7 +180,7 @@ const Explore = () => {
                             bounds={mosaic_data[variant][date]['mosaic']['overlayBounds']}
                             opacity={opacity}
                         />
-                        <MapFly overlayBounds={mosaic_data[variant][date]['mosaic']['overlayBounds']} />
+                        <MapFly overZoom={overZoom} overlayBounds={mosaic_data[variant][date]['mosaic']['overlayBounds']} />
 
 
                         {mosaic_data[variant][date]['healthy']?.map(latLong => {
@@ -159,9 +208,6 @@ const Explore = () => {
                             )
                         })}
 
-
-
-
                         {mosaic_data[variant][date]['unhealthy']?.map(latLong => {
                             return (
                                 <Marker
@@ -187,6 +233,61 @@ const Explore = () => {
                                 </Marker>
                             )
                         })}
+
+
+                        {imageMarkers?.map(imgMarker => {
+                            return (
+                                <Marker
+                                    key={imgMarker.Lat}
+                                    position={[imgMarker.Lat, imgMarker.Lon]}
+                                    icon={L.icon({
+                                        iconUrl: imgMarker.url,
+                                        className: 'rounded-full',
+                                        // shadowUrl: 'leaf-shadow.png',
+                                        iconSize: [30, 30], // size of the icon
+                                        // shadowSize: [50 / 2, 64 / 2], // size of the shadow
+                                        iconAnchor: [0, 0],
+                                        // iconAnchor: [22 / 2, 94 / 2], // point of the icon which will correspond to marker's location
+                                        // shadowAnchor: [4 / 2, 62 / 2],  // the same for the shadow
+                                        popupAnchor: [0, 0] // point from which the popup should open relative to the iconAnchor
+
+                                    })}>
+
+                                    <Popup>
+                                        <img src={imgMarker.url} className='rounded-xl w-[30vw]' />
+                                        {/* <h2>{imgMarker['File Name']}</h2> */}
+                                        <p className='text-xs flex justify-center gap-2 my-4'>
+                                            <span className='flex items-center gap-1'>
+                                                <TbWorldLatitude />
+                                                Lat: {imgMarker.Lat}°
+                                            </span>
+                                            <span className='flex items-center gap-1'>
+                                                <TbWorldLongitude />
+                                                Lon: {imgMarker.Lon}°
+                                            </span>
+
+
+                                        </p>
+                                        <p className='text-xs flex justify-evenly'>
+                                            <span className='flex items-center gap-1'>
+                                                <FaMountain /> Alt: {imgMarker.Alt}m
+                                            </span>
+                                            <span className='flex items-center gap-1'>
+                                                <GiLobArrow />
+                                                Roll: {imgMarker.Roll}°
+                                            </span>
+                                            <span className='flex items-center gap-1'>
+                                                <TbPlaneTilt />
+                                                Pitch: {imgMarker.Pitch}°
+                                            </span>
+                                        </p>
+
+
+                                    </Popup>
+                                    {/* <Tooltip>Click To View Image and Details</Tooltip> */}
+                                </Marker>
+                            )
+                        })}
                     </>
                 )
                 }
@@ -209,7 +310,7 @@ const Explore = () => {
                     <Tooltip>This Region is unknown</Tooltip>
                 </Marker> */}
 
-                {/* <Location /> */}
+                {/* <MapInteraction /> */}
             </MapContainer>
 
             <div className="non-map-body">
@@ -296,11 +397,16 @@ const Explore = () => {
                             <div onClick={(e) => { let dates = Object.getOwnPropertyNames(mosaic_data[variant]); let curr = dates.indexOf(date); let next = dates[curr - 1]; if (next) { setDate(next) } }} className={` ${Object.getOwnPropertyNames(mosaic_data[variant]).indexOf(date) == 0 ? 'cursor-not-allowed text-gray-300 text-opacity-20' : 'cursor-pointer text-white'} select-none  absolute top-1/2 -left-6 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md `}>
                                 ◀
                             </div>
-                            <div onClick={() => { setOpacity(opacity + 0.01); }} className='absolute top-1/2 -right-32 -translate-x-1/2 cursor-pointer -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md'>
-                                📌
-                            </div>
                             <div onClick={(e) => { let dates = Object.getOwnPropertyNames(mosaic_data[variant]); let curr = dates.indexOf(date); let next = dates[curr + 1]; if (next) { setDate(next) } }} className={`  ${Object.getOwnPropertyNames(mosaic_data[variant]).indexOf(date) == Object.getOwnPropertyNames(mosaic_data[variant]).length - 1 ? 'cursor-not-allowed text-gray-300 text-opacity-20' : 'cursor-pointer text-white'} select-none absolute top-1/2 -right-16 -translate-x-1/2 rotate-180 -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md `}>
                                 ◀
+                            </div>
+
+                            <div onClick={() => { setOpacity(opacity + 0.01); }} className='absolute top-1/2 -right-32 -translate-x-1/2 cursor-pointer -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md'>
+                                <BiMapPin size={18} />
+                            </div>
+
+                            <div onClick={() => { setOverZoom(!overZoom); }} className='absolute top-1/2 -right-44 -translate-x-1/2 cursor-pointer -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md'>
+                                {overZoom? <BsFullscreenExit/> :  <BsArrowsFullscreen />}
                             </div>
 
                         </div>
@@ -366,15 +472,17 @@ const Explore = () => {
                                 <h1 className='text-center text-3xl'>{variant} Rice</h1>
                                 <div className='flex flex-wrap justify-between items-center'>
                                     <p className='text-lg'>Date : {date}</p>
-                                    <p className='text-sm'>Captured with DJI Phantom 4 UAV. Sentera Precision NDVI Single Sensor</p>
+                                    <p className='text-sm flex items-center gap-1'>
+                                        <TbDrone /> Captured with DJI Phantom 4 UAV. Sentera Precision NDVI Single Sensor
+                                    </p>
                                 </div>
                                 <p className="text-right text-xs">
                                     Altitude: 230m
                                 </p>
-
+                                <p className='text-xs text-gray-600 text-left'>Limited images are shown here in the frontend. For more images, contact developers.</p>
                             </>
                         }>
-                            <ImageGrid date={date} variant={variant} images={images_links[variant.replace(' ', '_').toLowerCase()][date]['files']} />
+                            <ImageGrid addImageMarker={addImageMarker} date={date} variant={variant} images={images_links[variant.replace(' ', '_').toLowerCase()][date]['files']} />
 
                         </Modal>
                     </>

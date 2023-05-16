@@ -5,7 +5,7 @@ import { image_details } from '@/pages/api/image_details';
 import { FaMountain } from 'react-icons/fa';
 import { TbPlaneTilt, TbWorldLatitude, TbWorldLongitude, } from 'react-icons/tb';
 import { GiLobArrow } from 'react-icons/gi';
-const ImageGrid = ({ images, variant, date }) => {
+const   ImageGrid = ({ images, variant, date, addImageMarker }) => {
     const [imageModalState, setImageModalState] = useState({ isOpen: false, imgLink: null });
 
     function handleImagaModelOpenState(state) {
@@ -53,17 +53,17 @@ const ImageGrid = ({ images, variant, date }) => {
                                 <TbPlaneTilt />
                                 Pitch: {imageDetails.Pitch}°
                             </span>
-
-
                         </p>
+                        <button className='my-4 bg-gray-600 hover:bg-gray-900 text-white px-3 py-2 rounded-lg' onClick={(e)=>{console.log(e); addImageMarker({...imageDetails, url:imageModalState.imgLink})}}>
+                            📌 View on Map
+                        </button>
                     </div>
                         : 'Image Details'
                 }>
                     <div className='flex flex-row flex-1 gap-6 justify-center items-center'>
                         <div className='text-lg'>
                             <p>Predicted Stage</p>
-                            <p>{mosaic_data[variant][date]['stage']}</p>
-                            <p>Confidence: {(80 + Math.random() * 15).toPrecision(4)}</p>
+                            <p className='text-black'>{mosaic_data[variant][date]['stage']}</p>
                         </div>
                         <img src={imageModalState.imgLink} className='rounded-xl w-[30vw]' />
                     </div>
