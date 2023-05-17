@@ -124,7 +124,7 @@ const Explore = () => {
                     // console.log({sorted_distances});
                     console.log('closest image', sorted_distances[0]);
                     let closest = sorted_distances[0];
-                    addImageMarker({ ...sorted_distances[0], url: `${variant.toLowerCase().replace(' ', '_')}/${date}/${closest['File Name']}` });
+                    addImageMarker({ ...sorted_distances[0], url: `${variant.toLowerCase().replace(' ', '_')}/${date}/${closest['File Name'].toLowerCase()}` });
                 }
                 // else{
                 //     setImageMarkers([]);
