@@ -110,29 +110,29 @@ const Explore = () => {
 
     }
 
-    // function MapInteraction() {
-    //     const map = useMapEvents({
-    //         click: (e) => {
-    //             // navigator.clipboard.writeText([...Object.values(e.latlng)]);
-    //             console.log(Object.values(e.latlng));
-    //             let isInside = L.latLngBounds(mosaic_data[variant][date]['mosaic']['overlayBounds']).overlaps(e.latlng.toBounds(0.0000000000001));
-    //             // console.log('isInide', isInside);
-    //             if (isInside) {
-    //                 let distances = image_details[getKey()].map(k => { return { ...k, dist: e.latlng.distanceTo(L.latLng(k.Lat, k.Lon)) } });
-    //                 // console.log({distances});
-    //                 let sorted_distances = distances.sort((a, b) => a.dist - b.dist);
-    //                 // console.log({sorted_distances});
-    //                 console.log('closest image', sorted_distances[0]);
-    //                 let closest = sorted_distances[0];
-    //                 addImageMarker({ ...sorted_distances[0], url: `${variant.toLowerCase().replace(' ', '_')}/${date}/${closest['File Name']}` });
-    //             }
-    //             else{
-    //                 setImageMarkers([]);
-    //             }
+    function MapInteraction() {
+        const map = useMapEvents({
+            click: (e) => {
+                navigator.clipboard.writeText([...Object.values(e.latlng)]);
+                console.log(Object.values(e.latlng));
+                let isInside = L.latLngBounds(mosaic_data[variant][date]['mosaic']['overlayBounds']).overlaps(e.latlng.toBounds(0.0000000000001));
+                console.log('isInide', isInside);
+                if (isInside) {
+                    let distances = image_details[getKey()].map(k => { return { ...k, dist: e.latlng.distanceTo(L.latLng(k.Lat, k.Lon)) } });
+                    // console.log({distances});
+                    let sorted_distances = distances.sort((a, b) => a.dist - b.dist);
+                    // console.log({sorted_distances});
+                    console.log('closest image', sorted_distances[0]);
+                    let closest = sorted_distances[0];
+                    addImageMarker({ ...sorted_distances[0], url: `${variant.toLowerCase().replace(' ', '_')}/${date}/${closest['File Name']}` });
+                }
+                // else{
+                //     setImageMarkers([]);
+                // }
 
-    //         }
-    //     })
-    // }
+            }
+        })
+    }
 
     function timeDiff() {
         if (mosaic_data && mosaic_data[variant] && mosaic_data[variant][date]) {
@@ -312,7 +312,7 @@ const Explore = () => {
                     <Tooltip>This Region is unknown</Tooltip>
                 </Marker> */}
 
-                {/* <MapInteraction /> */}
+                <MapInteraction />
             </MapContainer>
 
             <div className="non-map-body">

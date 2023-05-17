@@ -108,4 +108,5 @@ function generateOneMonthData(){
 
 
 
-export { generateFourMonthsData, generateSevenDaysData, generateOneMonthData };
+// export { generateFourMonthsData, generateSevenDaysData, generateOneMonthData };
+module.exports = { generateFourMonthsData, generateSevenDaysData, generateOneMonthData };
