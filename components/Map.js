@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import "leaflet/dist/leaflet.css";
 import { latLng } from 'leaflet';
 import L from 'leaflet'
-import { ideal_stages, mosaic_data } from '../src/pages/api/alldata';
+import { ideal_stages, mosaic_data, recommendations } from '../src/pages/api/alldata';
 
 
 import { WiHail } from 'react-icons/wi/';
@@ -113,7 +113,7 @@ const Explore = () => {
     function MapInteraction() {
         const map = useMapEvents({
             click: (e) => {
-                navigator.clipboard.writeText([...Object.values(e.latlng)]);
+                // navigator.clipboard.writeText([...Object.values(e.latlng)]);
                 console.log(Object.values(e.latlng));
                 let isInside = L.latLngBounds(mosaic_data[variant][date]['mosaic']['overlayBounds']).overlaps(e.latlng.toBounds(0.0000000000001));
                 console.log('isInide', isInside);
@@ -337,7 +337,7 @@ const Explore = () => {
                         </div>
 
                         <div className="fixed top-2 right-2 w-80 rounded-xl text-xl text-white bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-6 py-3 z-20 ">
-                            <h1>Growth Stage: {mosaic_data[variant][date]['stage']}</h1>
+                            <h1 className='text-base'>Growth Stage: {mosaic_data[variant][date]['stage']}</h1>
                             <div className="text-xs">
                                 <div className='mt-3 border-r-[1px] border-gray-100 border-opacity-50 pr-2'>
                                     <div className="flex justify-between text-base items-center ">
@@ -363,7 +363,7 @@ const Explore = () => {
                                 </div>
 
 
-                                <div className='mt-6 border-r-[1px] border-gray-100 border-opacity-50 pr-2'>
+                                <div className='mt-2 border-r-[1px] border-gray-100 border-opacity-50 pr-2'>
                                     <div className="flex justify-between text-base items-center ">
                                         <p className='text-base'>Time Taken at this stage</p>
                                         <div onClick={(e) => { console.log(e); setModalState({ isOpen: true, timeGraph: true }); }} className='border-2 border-white rounded-full hover:bg-white hover:text-black cursor-pointer px-2 py-1 '>
@@ -387,8 +387,27 @@ const Explore = () => {
                                                     :
                                                     ideal_stages.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.analysis_less
                                             }
-
                                         </p>
+
+                                        <h2 className='mt-2 mb-1'> Recommendations / Remarks </h2>
+                                        <p className='w-full text-left text-xs'>
+                                            {timeDiff().includes('equal') ?
+                                                <ul className='list-disc ml-4'>
+                                                    {recommendations.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.recommendations.equal.map(r => <li>{r}</li>)}
+                                                </ul>
+
+                                                :
+                                                timeDiff().includes('more') ?
+                                                    <ul className='list-disc ml-4'>
+                                                        {recommendations.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.recommendations.more.map(r => <li>{r}</li>)}
+                                                    </ul>
+                                                    :
+                                                    <ul className='list-disc ml-4'>
+                                                        {recommendations.filter(x => x.name == mosaic_data[variant][date]['stage'])[0]?.recommendations.less.map(r => <li>{r}</li>)}
+                                                    </ul>
+                                            }
+                                        </p>
+
                                     </div>
                                 </div>
                             </div>
@@ -408,29 +427,27 @@ const Explore = () => {
                             </div>
 
                             <div onClick={() => { setOverZoom(!overZoom); }} className='absolute top-1/2 -right-44 -translate-x-1/2 cursor-pointer -translate-y-1/2 rounded-full bg-black bg-opacity-40 px-3 py-2  backdrop-filter backdrop-blur-md'>
-                                {overZoom? <BsFullscreenExit/> :  <BsArrowsFullscreen />}
+                                {overZoom ? <BsFullscreenExit /> : <BsArrowsFullscreen />}
                             </div>
 
                         </div>
 
+                        <div className=" fixed right-2 bottom-0 rounded-xl  mb-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md px-1 py-1 z-20 text-black">
+                            <img className='h-[125px]' src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt="" />
+                        </div>
 
-                        <div className="fixed bottom-2 right-2 flex flex-col content-end items-end">
-                            <div className="rounded-xl  mb-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-md px-1 py-1 z-20 text-black">
-                                <img className='h-[150px]' src={mosaic_data[variant][date]['mosaic'][`${filter.toLowerCase()}_legend`]} alt="" />
-                            </div>
 
-                            <div className="w-44 flex items-center justify-center rounded-lg  bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-5 py-1 z-20 text-black">
-                                <label className='mr-2 mb-1 text-white'>Opacity </label>
-                                <input
-                                    type="range"
-                                    min="0.0"
-                                    max="1.0"
-                                    step="0.01"
-                                    value={opacity}
-                                    onChange={handleOpacityChange}
-                                    className="w-full bg-gradient-to-r from-black to-white bg-blur rounded-full h-2 appearance-none focus:outline-none"
-                                />
-                            </div>
+                        <div className=" fixed bottom-2 left-1/2 -translate-x-1/2 w-44 flex items-center justify-center rounded-lg  bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-5 py-1 z-20 text-black">
+                            <label className='mr-2 mb-1 text-white text-xs'>Opacity </label>
+                            <input
+                                type="range"
+                                min="0.0"
+                                max="1.0"
+                                step="0.01"
+                                value={opacity}
+                                onChange={handleOpacityChange}
+                                className="w-full bg-gradient-to-r from-black to-white bg-blur rounded-full h-1 appearance-none focus:outline-none"
+                            />
                         </div>
                         <Modal isOpen={modalState.isOpen} setIsOpen={setModalOpen} title={`${modalState.timeGraph ? `Growth Time Analysis of ${variant}` : `Indices Comparison of ${variant} over time`}`}>
                             <div className="flex flex-col justify-center align-middle  items-center gap-3">

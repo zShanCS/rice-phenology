@@ -53,7 +53,78 @@ export const ideal_stages = [
         "analysis_equal": "The field took ideal time for Grain Filling & Ripening stage. Congratulations on a successful rice crop!"
     }
 ]
-
+export const recommendations = [
+    {
+        "name": "Seedling",
+        "recommendations": {
+            "more": [
+                "Check soil temperatures and ensure they are suitable for seedling growth.",
+                "Improve soil conditions by incorporating organic matter or using appropriate fertilizers.",
+                "Ensure adequate water supply for seedling establishment."
+            ],
+            "less": [
+                "Monitor soil temperatures to avoid excessively warm conditions.",
+                "Continue providing suitable soil conditions and adequate water supply to support healthy seedling growth."
+            ],
+            "equal": [
+                "Congratulations on successfully completing the first stage of rice growth!"
+            ]
+        }
+    },
+    {
+        "name": "Tillering",
+        "recommendations": {
+            "more": [
+                "Assess soil conditions and address any deficiencies or imbalances.",
+                "Optimize nutrient and water supply to support vigorous tiller development.",
+                "Monitor and manage pests and diseases that may affect tiller growth."
+            ],
+            "less": [
+                "Maintain ideal soil conditions, including good water and nutrient supply.",
+                "Implement effective pest and disease control measures to ensure healthy tiller development."
+            ],
+            "equal": [
+                "Great job! You are making good progress in rice growth!"
+            ]
+        }
+    },
+    {
+        "name": "Flowering",
+        "recommendations": {
+            "more": [
+                "Monitor and manage water stress, ensuring adequate irrigation during this critical stage.",
+                "Mitigate high temperatures and provide shading if necessary.",
+                "Implement pest and disease control strategies to prevent damage to flowering plants."
+            ],
+            "less": [
+                "Maintain ideal weather and light conditions to support optimal flowering.",
+                "Continue providing sufficient water and nutrient supply to ensure successful pollination and grain development.",
+                "Monitor and manage pests and diseases to protect flowering plants."
+            ],
+            "equal": [
+                "Excellent job! You are on track to a successful harvest!"
+            ]
+        }
+    },
+    {
+        "name": "Ripening",
+        "recommendations": {
+            "more": [
+                "Assess and manage water stress to avoid adverse effects on grain filling and ripening.",
+                "Address nutrient deficiencies through appropriate fertilization.",
+                "Implement pest and disease control measures to protect ripening grains."
+            ],
+            "less": [
+                "Maintain ideal weather and light conditions during the critical grain filling stage.",
+                "Continue providing sufficient water and nutrient supply to support grain development.",
+                "Monitor and manage pests and diseases to ensure a healthy harvest."
+            ],
+            "equal": [
+                "Congratulations on a successful rice crop!"
+            ]
+        }
+    }
+];
 
 export const mosaic_images_used = {
     "Kainat": {
@@ -127,7 +198,7 @@ export const mosaic_data = {
             ]
         },
         "2022-07-06": {
-            "NDVI": 0.3,
+            "NDVI": 0.7,
             "SAVI": 0.4,
             "MSAVI": 0.5,
             "temp": 35,
@@ -229,9 +300,9 @@ export const mosaic_data = {
             ]
         },
         "2022-09-10": {
-            "NDVI": 0.8,
-            "SAVI": 0.7,
-            "MSAVI": 0.8,
+            "NDVI": 0.5,
+            "SAVI": 0.5,
+            "MSAVI": 0.4,
             "temp": 27,
             "prec": 29,
             "stage": "Ripening",
@@ -283,7 +354,7 @@ export const mosaic_data = {
     'Hybrid': {
         "2022-06-11": {
             "NDVI": 0.1,
-            "SAVI": 0.4,
+            "SAVI": 0.2,
             "MSAVI": 0.3,
             "temp": 35,
             "prec": 32,
@@ -365,22 +436,22 @@ export const mosaic_data = {
             'healthy': [
                 [32.34005421582581, 72.53584742526186],
                 [32.339678089402106, 72.53578305224983],
-                [32.33970074766465,72.53506476526908]
+                [32.33970074766465, 72.53506476526908]
             ],
             'unhealthy': [
                 // [32.340124319908334, 72.53488941374354],
                 // [32.33935167357029, 72.53488941374354],
                 // [32.340210420851264, 72.535648246935],
                 // [32.34014697805915, 72.53529966631703]
-                [32.339265708032535,72.53561204466301],
-                [32.34006781072752,72.53520963334395]
+                [32.339265708032535, 72.53561204466301],
+                [32.34006781072752, 72.53520963334395]
             ]
         },
 
         "2022-08-27": {
-            "NDVI": 0.7,
-            "SAVI": 0.5,
-            "MSAVI": 0.6,
+            "NDVI": 0.4,
+            "SAVI": 0.3,
+            "MSAVI": 0.4,
             "temp": 35,
             "prec": 40,
             "stage": "Flowering",
@@ -447,10 +518,10 @@ export const mosaic_data = {
                     // [32.339026750942125, 72.53446255340462],
                     // [32.34037087740836, 72.53530713261662]
                     [
-                        32.34120536305653,72.5391634567959
+                        32.34120536305653, 72.5391634567959
                     ],
                     [
-                        32.34015408147637,72.53822441815088
+                        32.34015408147637, 72.53822441815088
                     ]
                 ]
             },
@@ -475,8 +546,8 @@ export const mosaic_data = {
             "temp": 40,
             "prec": 32,
             "stage": "Tillering",
-            "NDVI": 0.3,
-            "SAVI": 0.6,
+            "NDVI": 0.5,
+            "SAVI": 0.4,
             "MSAVI": 0.4,
             "timeTaken": 45,
             "mosaic": {
@@ -488,10 +559,10 @@ export const mosaic_data = {
                 "msavi_legend": "mosaics/msavi/220719SKlegend.png",
                 "overlayBounds": [
                     [
-                        32.341300522622156,72.53916879669079
+                        32.341300522622156, 72.53916879669079
                     ],
                     [
-                        32.34005887599672,72.53826736654807
+                        32.34005887599672, 72.53826736654807
                     ]
                 ]
             },
@@ -520,7 +591,7 @@ export const mosaic_data = {
             "temp": 43,
             "prec": 39,
             "stage": "Flowering",
-            "NDVI": 0.7,
+            "NDVI": 0.4,
             "SAVI": 0.5,
             "MSAVI": 0.5,
             "timeTaken": 30,

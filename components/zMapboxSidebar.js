@@ -18,7 +18,7 @@ const Sidebar = ({ variant, setVariant, date, setDate, filter, setFilter, varian
 
   return (
     // <div className="fixed top-0 left-0 w-full h-full bg-white bg-opacity-50 backdrop-filter backdrop-blur-md z-10">
-    <div className={`${absolutePosition ? 'fixed left-2 top-1/2 -translate-y-1/2' : ''}   w-72 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black`}>
+    <div className={`${absolutePosition ? 'fixed left-2 top-1/2 -translate-y-1/2' : ''} mt-4  w-72 rounded-xl bg-black bg-opacity-30 backdrop-filter backdrop-blur-md px-4 py-4 z-20 text-black`}>
 
       {!showVariantOnly &&
         <div className="flex justify-center items-center w-full border-b-2 mb-3 p-3">
