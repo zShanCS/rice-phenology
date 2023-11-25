@@ -1,3 +1,8 @@
+# Rice Phenology Estimation Software
+
+## Overview
+Our software is a web-based tool designed to help farmers estimate rice phenology using drone imagery. Utilizing advanced machine learning algorithms, it analyzes multispectral images to monitor crop growth stages, identify fields needing attention, and aid in yield optimization. The user-friendly interface ensures easy accessibility for farmers, enhancing crop management and contributing to agricultural efficiency.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
